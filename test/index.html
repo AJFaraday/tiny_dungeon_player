@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Tiny Dungeon Player Test Suite</title>
+    <link rel="stylesheet" href="../style/test/qunit-1.23.1.min.css">
+
+    <!-- Test framework and jquery -->
+    <script src="../lib/test/qunit-1.23.1.min.js"></script>
+    <script src="../lib/jquery/jquery-2.2.3.min.js"></script>
+
+    <!-- TODO get rid, you know, whenever -->
+    <script src="./proof_of_concept.js"></script>
+
+    <!-- Texting 'fixtures' for test suite -->
+    <script src="./test_data.js"></script>
+
+    <!-- TDP entities -->
+    <script src="../lib/tdp/test_dungeon_player.js"></script>
+    <script src="../lib/tdp/constructors/field.js"></script>
+
+    <!-- TDP entity tests -->
+    <script src="./field_test.js"></script>
+
+  </head>
+  <body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+  </body>
+</html>
