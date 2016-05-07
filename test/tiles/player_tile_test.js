@@ -1,17 +1,6 @@
 QUnit.module('TDP.constructors.Tile player tile');
 
 QUnit.test(
-  'should hold on to its source emoji',
-  function (assert) {
-    assert.equal(
-      TestData.player_tile.source,
-      TDP.data.named_tiles.worried,
-      ('wall tile source should be ' + TDP.data.named_tiles.worried)
-    );
-  }
-);
-
-QUnit.test(
   'should have a type of "player"',
   function (assert) {
     assert.equal(TestData.player_tile.type, 'player', 'tile type should be player');

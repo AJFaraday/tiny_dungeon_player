@@ -1,6 +1,17 @@
 QUnit.module('TDP.constructors.Tile');
 
 QUnit.test(
+  'should hold on to its source emoji',
+  function (assert) {
+    assert.equal(
+      door_tile.source,
+      TDP.data.named_tiles.door,
+      ('wall tile source should be ' + TDP.data.named_tiles.wall)
+    );
+  }
+);
+
+QUnit.test(
   "should know it's position",
   function (assert) {
     var tile = TDP.field.tileAt(1,2);

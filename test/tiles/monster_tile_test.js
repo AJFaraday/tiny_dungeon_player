@@ -1,17 +1,6 @@
-QUnit.module('TDP.constructors.Tile floor tile');
+QUnit.module('TDP.constructors.Tile monster tile');
 
 var monster_tile = TestData.monster_tile;
-
-QUnit.test(
-  'should hold on to its source emoji',
-  function (assert) {
-    assert.equal(
-      monster_tile.source,
-      TDP.data.named_tiles.monster,
-      ('wall tile source should be ' + TDP.data.named_tiles.wall)
-    );
-  }
-);
 
 QUnit.test(
   'should have a type of "monster"',
@@ -23,17 +12,17 @@ QUnit.test(
 );
 
 QUnit.test(
-  'should be passable',
+  'should be not passable',
   function (assert) {
-    assert.notOk(monster_tile.impassable, 'should be impassable');
-    assert.ok(monster_tile.passable, 'should not be passable');
+    assert.ok(monster_tile.impassable, 'should be impassable');
+    assert.notOk(monster_tile.passable, 'should not be passable');
   }
 );
 
 QUnit.test(
   'should have an interaction',
   function (assert) {
-    assert.ok(TestData.floor_tile.hasInteraction, 'should have an interaction');
+    assert.ok(TestData.monster_tile.hasInteraction, 'should have an interaction');
   }
 );
 
