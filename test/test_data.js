@@ -25,4 +25,5 @@ TestData = {
 
 }
 ;
-        
+
+TDP.init(TestData.source);
