@@ -76,7 +76,7 @@ QUnit.test(
     assert.ok(space.passable, 'tile at 4, 4 should be passable');
     assert.notOk(space.impassable, 'tile at 4, 4 should not be impassable');
 
-    assert.ok(space.hasInteraction, 'tile at 4, 4 should have an interaction');
+    assert.notOk(space.hasInteraction, 'tile at 4, 4 should not have an interaction');
   }
 );
 

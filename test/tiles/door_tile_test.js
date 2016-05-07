@@ -33,41 +33,6 @@ QUnit.test(
 QUnit.test(
   'should not have an interaction',
   function (assert) {
-    assert.ok(door_tile.hasInteraction, 'should not have an interaction');
+    assert.notOk(door_tile.hasInteraction, 'should not have an interaction');
   }
 );
-
-QUnit.test(
-  'should have a function as its interaction',
-  function (assert) {
-    assert.ok(
-      jQuery.isFunction(door_tile.interaction),
-      'should not have an interaction'
-    );
-  }
-);
-
-QUnit.test(
-  'should should be replaced by a player on interaction',
-  function (assert) {
-    var door_tile = TDP.field.tileAt(4, 4);
-    var player_tile = TDP.field.tileAt(7, 8);
-    // Quick round-trip to confirm current position
-    var position = TDP.field.positionOf(door_tile);
-    assert.equal(
-      door_tile,
-      TDP.field.tileAt(position[0], position[1]),
-      'door tile must be accessible at the tiles position'
-    );
-    // make the interaction
-    door_tile.interaction(door_tile, player_tile);
-    // check that the player is at the doors position,
-    assert.equal(
-      player_tile,
-      TDP.field.tileAt(position[0], position[1]),
-      'player tile must now be at the door position'
-    );
-
-  }
-);
-
