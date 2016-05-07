@@ -8,3 +8,4 @@ var food_tile = new TDP.constructors.Tile(TDP.data.named_tiles.cheese);
 var item_tile = new TDP.constructors.Tile(TDP.data.named_tiles.book);
 var monuments_tile = new TDP.constructors.Tile(TDP.data.named_tiles.statue);
 var monster_tile = new TDP.constructors.Tile(TDP.data.named_tiles.ogre);
+
