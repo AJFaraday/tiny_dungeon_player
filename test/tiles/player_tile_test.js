@@ -51,10 +51,10 @@ QUnit.test(
   function (assert) {
     // the one on the grid
     var player_tile = TDP.field.tileAt(7, 8);
-    player_tile.moveUp()
+    player_tile.moveUp();
     assert.equal(
-      player_tile.position(),
-      [7, 7],
+      player_tile.position().toString(),
+      [7, 7].toString(),
       'should move up 1 space when moveUp is called'
     );
     player_tile.moveDown();
@@ -66,10 +66,10 @@ QUnit.test(
   function (assert) {
     // the one on the grid
     var player_tile = TDP.field.tileAt(7, 8);
-    player_tile.moveDown()
+    player_tile.moveDown();
     assert.equal(
-      player_tile.position(),
-      [7, 9],
+      player_tile.position().toString(),
+      [7, 9].toString(),
       'should move up 1 space when moveDown is called'
     );
     player_tile.moveUp();
@@ -81,10 +81,10 @@ QUnit.test(
   function (assert) {
     // the one on the grid
     var player_tile = TDP.field.tileAt(7, 8);
-    player_tile.moveRight()
+    player_tile.moveRight();
     assert.equal(
-      player_tile.position(),
-      [8, 8],
+      player_tile.position().toString(),
+      [8, 8].toString(),
       'should move up 1 space when moveRight is called'
     );
     player_tile.moveLeft();
@@ -96,10 +96,10 @@ QUnit.test(
   function (assert) {
     // the one on the grid
     var player_tile = TDP.field.tileAt(7, 8);
-    player_tile.moveLeft()
+    player_tile.moveLeft();
     assert.equal(
-      player_tile.position(),
-      [6, 8],
+      player_tile.position().toString(),
+      [6, 8].toString(),
       'should move up 1 space when moveLeft is called'
     );
     player_tile.moveRight();
