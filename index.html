@@ -2,10 +2,33 @@
 <html>
   <head>
     <title>Tiny Dungeon Player</title>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="style/tdp/board.css">
+
     <script src="lib/jquery/jquery-2.2.3.min.js"></script>
+
+    <!-- TODO package all this together -->
+    <script src="lib/tdp/tiny_dungeon_player.js"></script>
+    <script src="lib/tdp/utils.js"></script>
+    <script src="lib/tdp/ui.js"></script>
+    <script src="lib/tdp/data/tiles.js"></script>
+    <script src="lib/tdp/commands/tile_interactions.js"></script>
+    <script src="lib/tdp/commands/key_events.js"></script>
+    <script src="lib/tdp/commands/player_actions.js"></script>
+    <script src="lib/tdp/constructors/field.js"></script>
+    <script src="lib/tdp/constructors/tile.js"></script>
+    
+    <!-- TODO a less canned source -->
+    <script src="test/test_data.js"></script>
+
+    
   </head>
   <body>
     <h1>Tiny Dungeon Player</h1>
+
+    <div id="TDP_board"></div>
+    <div id="TDP_readout"></div>
 
   </body>
 </html>
