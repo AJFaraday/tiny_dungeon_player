@@ -6,6 +6,9 @@
     <title>Tiny Dungeon Player Test Suite</title>
     <link rel="stylesheet" href="../style/test/qunit-1.23.1.min.css">
 
+    <link rel="stylesheet" href="../style/tdp/board.css">
+
+
     <!-- Test framework and jquery -->
     <script src="../lib/test/qunit-1.23.1.min.js"></script>
     <script src="../lib/jquery/jquery-2.2.3.min.js"></script>
@@ -14,10 +17,13 @@
     <script src="./proof_of_concept.js"></script>
 
     <!-- TDP entities -->
-    <script src="../lib/tdp/test_dungeon_player.js"></script>
+    <script src="../lib/tdp/tiny_dungeon_player.js"></script>
     <script src="../lib/tdp/utils.js"></script>
+    <script src="../lib/tdp/ui.js"></script>
     <script src="../lib/tdp/data/tiles.js"></script>
     <script src="../lib/tdp/commands/tile_interactions.js"></script>
+    <script src="../lib/tdp/commands/key_events.js"></script>
+    <script src="../lib/tdp/commands/player_actions.js"></script>
 
     <script src="../lib/tdp/constructors/field.js"></script>
     <script src="../lib/tdp/constructors/tile.js"></script>
@@ -32,10 +38,16 @@
     <script src="./tiles/door_tile_test.js"></script>
 
     <script src="./field_test.js"></script>
+    <script src="./tiny_dungeon_player_test.js"></script>
 
   </head>
   <body>
+
     <div id="qunit"></div>
     <div id="qunit-fixture"></div>
+
+    <div id="TDP_board"></div>
+    <div id="TDP_readout"></div>
+
   </body>
 </html>

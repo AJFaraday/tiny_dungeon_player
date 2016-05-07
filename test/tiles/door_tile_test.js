@@ -47,14 +47,14 @@ QUnit.test(
   }
 );
 
-var player_tile = TestData.player_tile;
-
 QUnit.test(
   'should should be replaced by a player on interaction',
   function (assert) {
+    var door_tile = TDP.field.tileAt(7, 7);
+    var player_tile = TDP.field.tileAt(7, 8);
     // Quick round-trip to confirm current position
     var position = TDP.field.positionOf(door_tile);
-    assert_equal(
+    assert.equal(
       door_tile,
       TDP.field.tileAt(position[0], position[1]),
       'door tile must be accessible at the tiles position'
@@ -62,7 +62,7 @@ QUnit.test(
     // make the interaction
     door_tile.interaction(door_tile, player_tile);
     // check that the player is at the doors position,
-    assert_equal(
+    assert.equal(
       player_tile,
       TDP.field.tileAt(position[0], position[1]),
       'player tile must now be at the door position'
