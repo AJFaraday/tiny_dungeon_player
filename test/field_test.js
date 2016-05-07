@@ -1,4 +1,4 @@
-QUnit.module('TDP.constructors.Field attributes');
+QUnit.module('TDP.constructors.Field');
 
 var field = new TDP.constructors.Field(TestData.source);
 
