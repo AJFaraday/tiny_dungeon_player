@@ -9,8 +9,9 @@ div.TDP_board_row {
 }
 
 div.TDP_board_tile {
-  width: 19px;
-  height: 19px;
+  width: 42px;
+  height: 42px;
+  font-size: 40px;
   float: left;
   position: relative;
 }
