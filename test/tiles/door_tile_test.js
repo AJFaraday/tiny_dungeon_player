@@ -50,7 +50,7 @@ QUnit.test(
 QUnit.test(
   'should should be replaced by a player on interaction',
   function (assert) {
-    var door_tile = TDP.field.tileAt(7, 7);
+    var door_tile = TDP.field.tileAt(4, 4);
     var player_tile = TDP.field.tileAt(7, 8);
     // Quick round-trip to confirm current position
     var position = TDP.field.positionOf(door_tile);
