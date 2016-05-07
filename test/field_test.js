@@ -41,8 +41,8 @@ QUnit.test(
   function( assert ) {
     var space = field.tileAt(0, 0);
     assert.ok(space, 'there should be a tile at 0, 0');
-    assert.notOk(space.isPassalbe, 'tile at 0, 0 should not be passable');
-    assert.ok(space.isImpassalbe, 'tile at 0, 0 should be impassable');
+    assert.notOk(space.passable, 'tile at 0, 0 should not be passable');
+    assert.ok(space.impassable, 'tile at 0, 0 should be impassable');
 
     assert.notOk(space.hasInteraction, 'tile at 0, 0 should not have an interaction');
 
@@ -51,14 +51,15 @@ QUnit.test(
 );
 
 QUnit.test(
-  'should be able to retrieve passible space at 3, 2',
+  'should be able to retrieve passible space at 3, 3',
   function( assert ) {
-    var space = field.tileAt(3, 2);
-    assert.ok(space, 'there should be a tile at 3, 2');
-    assert.notOk(space.isPassalbe, 'tile at 3, 2 should be passable');
-    assert.ok(space.isImpassalbe, 'tile at 3, 2 should not be impassable');
+    var space = field.tileAt(3, 3);
 
-    assert.notOk(space.hasInteraction, 'tile at 0, 0 should not have an interaction');
+    assert.ok(space, 'there should be a tile at 3, 3');
+    assert.ok(space.passable, 'tile at 3, 3 should be passable');
+    assert.notOk(space.impassable, 'tile at 3, 3 should not be impassable');
+
+    assert.notOk(space.hasInteraction, 'tile at 3, 3 should not have an interaction');
 
     assert.ok(space.is('floor'), 'tile should be a floor');
   }
@@ -67,10 +68,11 @@ QUnit.test(
 QUnit.test(
   'should be able to retrieve door at 4, 4',
   function( assert ) {
-    var space = field.tileAt(3, 2);
+    var space = field.tileAt(4, 4);
+    console.log(space.type);
     assert.ok(space, 'there should be a tile at 4, 4');
-    assert.notOk(space.isPassalbe, 'tile at 4, 4 should be passable');
-    assert.ok(space.isImpassalbe, 'tile at 4, 4 should not be impassable');
+    assert.notOk(space.passable, 'tile at 4, 4 should be passable');
+    assert.ok(space.impassable, 'tile at 4, 4 should not be impassable');
 
     assert.ok(space.hasInteraction, 'tile at 4, 4 should not have an interaction');
 
