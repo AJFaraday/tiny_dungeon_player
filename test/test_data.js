@@ -20,7 +20,7 @@ TestData = {
   player_tile:new TDP.constructors.Tile(TDP.data.named_tiles.worried),
   food_tile:new TDP.constructors.Tile(TDP.data.named_tiles.cheese),
   item_tile:new TDP.constructors.Tile(TDP.data.named_tiles.book),
-  monuments_tile:new TDP.constructors.Tile(TDP.data.named_tiles.statue),
+  monument_tile:new TDP.constructors.Tile(TDP.data.named_tiles.statue),
   monster_tile:new TDP.constructors.Tile(TDP.data.named_tiles.ogre),
 
 }

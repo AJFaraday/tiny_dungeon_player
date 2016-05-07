@@ -22,6 +22,6 @@ QUnit.test(
 QUnit.test(
   'should not have an interaction',
   function (assert) {
-    assert.notOk(door_tile.hasInteraction, 'should not have an interaction');
+    assert.ok(door_tile.hasInteraction, 'should have an interaction');
   }
 );
