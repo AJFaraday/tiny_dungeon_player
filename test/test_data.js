@@ -23,9 +23,13 @@ TestData = {
   monument_tile:new TDP.constructors.Tile(TDP.data.named_tiles.statue),
   monster_tile:new TDP.constructors.Tile(TDP.data.named_tiles.ogre),
 
-}
-;
+  seeing_scenario: "🐘⬜⬜\n" +
+                   "⬜⬜⬜\n" +
+                   "⬜⬜🤔\n"
+};
 
 $(document).ready(function () {
   TDP.init(TestData.source);
 });
+
+

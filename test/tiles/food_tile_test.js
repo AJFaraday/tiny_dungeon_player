@@ -35,3 +35,22 @@ QUnit.test(
     );
   }
 );
+
+QUnit.test(
+  'should increase the players health by its heal value',
+  function (assert) {
+    var start_health = TDP.health;
+    var food_tile = TDP.field.tileAt(5,3);
+    var player_tile = TDP.field.tileAt(7,8);
+
+    food_tile.interaction(food_tile, player_tile);
+
+    assert.equal(
+      TDP.health,
+      (start_health + food_tile.heal_value),
+      'should increase the health'
+    );
+
+    TDP.fieldInit(TestData.source);
+  }  
+);

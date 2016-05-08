@@ -35,3 +35,87 @@ QUnit.test(
     );
   }
 );
+
+
+QUnit.test(
+  'it should not break everything if I init a new field',
+  function (assert) {
+    TDP.fieldInit(TestData.seeing_scenario);
+    var monster_tile = TDP.field.tileAt(0, 0);
+    /*
+     🐘⬜⬜
+     ⬜⬜⬜
+     ⬜⬜🤔
+     */
+    assert.ok(
+      monster_tile.canSeePlayer(),
+      'should be able to see the player'
+    );
+    /*
+     🐘⬜⬜
+     ⬜📕⬜
+     ⬜⬜🤔
+     */
+
+    TDP.field.tileAt(1, 1).replaceWith(
+      new TDP.constructors.Tile(TDP.data.named_tiles.book)
+    );
+    assert.notOk(
+      monster_tile.canSeePlayer(),
+      'should not be able to see the player'
+    );
+
+    /*
+     🐘⬜📕
+     ⬜⬜⬜
+     ⬜⬜🤔
+     */
+    TDP.field.tileAt(1, 1).replaceWith(
+      new TDP.constructors.Tile(TDP.data.named_tiles.floor)
+    );
+    TDP.field.tileAt(2, 0).replaceWith(
+      new TDP.constructors.Tile(TDP.data.named_tiles.book)
+    );
+    assert.ok(
+      monster_tile.canSeePlayer(),
+      'should be able to see the player with a book in the square'
+    );
+
+    /*
+     🐘📕⬜
+     ⬜⬜⬜
+     ⬜⬜🤔
+     */
+    TDP.field.tileAt(2, 0).replaceWith(
+      new TDP.constructors.Tile(TDP.data.named_tiles.floor)
+    );
+    TDP.field.tileAt(2, 1).replaceWith(
+      new TDP.constructors.Tile(TDP.data.named_tiles.book)
+    );
+    assert.notOk(
+      monster_tile.canSeePlayer(),
+      'should not be able to see the player'
+    );
+
+      /*
+       🐘⬜⬜
+       📕⬜⬜
+       ⬜⬜🤔
+       */
+      TDP.field.tileAt(2, 1).replaceWith(
+        new TDP.constructors.Tile(TDP.data.named_tiles.floor)
+      );
+      TDP.field.tileAt(1, 2).replaceWith(
+        new TDP.constructors.Tile(TDP.data.named_tiles.book)
+      );
+      assert.notOk(
+        monster_tile.canSeePlayer(),
+        'should not be able to see the player'
+      );
+
+    TDP.fieldInit(TestData.source);
+  }
+);
+
+
+
