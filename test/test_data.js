@@ -25,7 +25,13 @@ TestData = {
 
   seeing_scenario: "🐘⬜⬜\n" +
                    "⬜⬜⬜\n" +
-                   "⬜⬜🤔\n"
+                   "⬜⬜🤔\n",
+
+  moving_scenario: '⬜⬜⬜⬜⬜\n' +
+                   '⬜⬜⬜⬜⬜\n' +
+                   '⬜⬜🐘⬜⬜\n' +
+                   '⬜⬜⬜⬜⬜\n' +
+                   '⬜⬜⬜⬜⬜\n'
 };
 
 $(document).ready(function () {

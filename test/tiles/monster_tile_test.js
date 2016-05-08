@@ -38,7 +38,7 @@ QUnit.test(
 
 
 QUnit.test(
-  'it should not break everything if I init a new field',
+  'it should know if it can see the player or not',
   function (assert) {
     TDP.fieldInit(TestData.seeing_scenario);
     var monster_tile = TDP.field.tileAt(0, 0);
@@ -97,40 +97,40 @@ QUnit.test(
       'should not be able to see the player'
     );
 
-      /*
-       🐘⬜⬜
-       📕⬜⬜
-       ⬜⬜🤔
-       */
-      TDP.field.tileAt(2, 1).replaceWith(
-        new TDP.constructors.Tile(TDP.data.named_tiles.floor)
-      );
-      TDP.field.tileAt(1, 2).replaceWith(
-        new TDP.constructors.Tile(TDP.data.named_tiles.book)
-      );
-      assert.notOk(
-        monster_tile.canSeePlayer(),
-        'should not be able to see the player'
-      );
+    /*
+     🐘⬜⬜
+     📕⬜⬜
+     ⬜⬜🤔
+     */
+    TDP.field.tileAt(2, 1).replaceWith(
+      new TDP.constructors.Tile(TDP.data.named_tiles.floor)
+    );
+    TDP.field.tileAt(1, 2).replaceWith(
+      new TDP.constructors.Tile(TDP.data.named_tiles.book)
+    );
+    assert.notOk(
+      monster_tile.canSeePlayer(),
+      'should not be able to see the player'
+    );
 
     TDP.fieldInit(TestData.source);
   }
 );
 
 
-
 QUnit.test(
   'should attack a monster (hitting it)',
-  function(assert) {
+  function (assert) {
     var player_tile = TDP.field.tileAt(7, 8);
     var monster_tile = TDP.field.tileAt(2, 5);
     // ensure hit will be true
-    player_tile.willHit = function() {return true};
+    player_tile.willHit = function () {
+      return true
+    };
     // clear readout
     TDP.UI.readout.html('');
 
     var starting_health = monster_tile.health;
-    console.log(monster_tile.health);
     monster_tile.interaction(monster_tile, player_tile);
 
     assert.equal(
@@ -138,7 +138,7 @@ QUnit.test(
       starting_health - player_tile.damage
     );
     assert.ok(
-      (TDP.UI.readout.html().indexOf('Attacking '+ monster_tile.source +'!') > 1),
+      (TDP.UI.readout.html().indexOf('Attacking ' + monster_tile.source + '!') > 1),
       "should show that you're attacking in the readout"
     );
     assert.ok(
@@ -154,17 +154,18 @@ QUnit.test(
 
 QUnit.test(
   'should attack a monster (killing it)',
-  function(assert) {
+  function (assert) {
     var player_tile = TDP.field.tileAt(7, 8);
     var monster_tile = TDP.field.tileAt(2, 5);
     monster_tile.health = 1;
     // ensure hit will be true
-    player_tile.willHit = function() {return true};
+    player_tile.willHit = function () {
+      return true
+    };
     // clear readout
     TDP.UI.readout.html('');
 
     var starting_health = monster_tile.health;
-    console.log(monster_tile.health);
     monster_tile.interaction(monster_tile, player_tile);
 
     assert.equal(
@@ -173,7 +174,7 @@ QUnit.test(
     );
     assert.ok(monster_tile.isDead(), 'it should have died.');
     assert.ok(
-      (TDP.UI.readout.html().indexOf('Attacking '+ monster_tile.source +'!') > 1),
+      (TDP.UI.readout.html().indexOf('Attacking ' + monster_tile.source + '!') > 1),
       "should show that you're attacking in the readout"
     );
     assert.ok(
@@ -192,17 +193,18 @@ QUnit.test(
 
 QUnit.test(
   'should attack a monster (missing it)',
-  function(assert) {
+  function (assert) {
     var player_tile = TDP.field.tileAt(7, 8);
     var monster_tile = TDP.field.tileAt(2, 5);
     monster_tile.health = 1;
     // ensure hit will be false
-    player_tile.willHit = function() {return false};
+    player_tile.willHit = function () {
+      return false
+    };
     // clear readout
     TDP.UI.readout.html('');
 
     var starting_health = monster_tile.health;
-    console.log(monster_tile.health);
     monster_tile.interaction(monster_tile, player_tile);
 
     assert.equal(
@@ -210,7 +212,7 @@ QUnit.test(
       starting_health
     );
     assert.ok(
-      (TDP.UI.readout.html().indexOf('Attacking '+ monster_tile.source +'!') > 1),
+      (TDP.UI.readout.html().indexOf('Attacking ' + monster_tile.source + '!') > 1),
       "should show that you're attacking in the readout"
     );
     assert.ok(
@@ -220,4 +222,95 @@ QUnit.test(
   }
 );
 
+
+QUnit.test(
+  'it move towards a point',
+  function (assert) {
+    TDP.fieldInit(TestData.moving_scenario);
+    var monster_tile = TDP.field.tileAt(2, 2);
+    console.log(monster_tile);
+
+    /*
+     ⬜⬜⬜⬜⬜
+     ⬜⬜⬜⬜⬜
+     ⬜⬜🐘⬜⬜
+     ⬜⬜⬜⬜⬜
+     ⬜⬜⬜⬜⬜
+     */
+    monster_tile.XFirst = true;
+    monster_tile.moveTowards(0, 0); // top left
+    assert.equal(
+      monster_tile.position().toString(),
+      [1, 2].toString(),
+      'should have moved left.'
+    );
+
+    monster_tile.moveTo(2, 2);
+    monster_tile.XFirst = false;
+    monster_tile.moveTowards(0, 0); // top left
+    assert.equal(
+      monster_tile.position().toString(),
+      [2, 1].toString(),
+      'should have moved up.'
+    );
+
+    monster_tile.moveTo(2, 2);
+    monster_tile.XFirst = true;
+    monster_tile.moveTowards(4, 0); // top right
+    assert.equal(
+      monster_tile.position().toString(),
+      [3, 2].toString(),
+      'should have moved right.'
+    );
+
+    monster_tile.moveTo(2, 2);
+    monster_tile.XFirst = false;
+    monster_tile.moveTowards(4, 0); // top right
+    assert.equal(
+      monster_tile.position().toString(),
+      [2, 1].toString(),
+      'should have moved up.'
+    );
+
+    monster_tile.moveTo(2, 2);
+    monster_tile.XFirst = true;
+    monster_tile.moveTowards(4, 4); // bottom right
+    assert.equal(
+      monster_tile.position().toString(),
+      [3, 2].toString(),
+      'should have moved right.'
+    );
+
+    monster_tile.moveTo(2, 2);
+    monster_tile.XFirst = false;
+    monster_tile.moveTowards(4, 4); // bottom right
+    assert.equal(
+      monster_tile.position().toString(),
+      [2, 3].toString(),
+      'should have moved down.'
+    );
+
+    monster_tile.moveTo(2, 2);
+    monster_tile.XFirst = true;
+    monster_tile.moveTowards(0, 4); // bottom left
+    assert.equal(
+      monster_tile.position().toString(),
+      [1, 2].toString(),
+      'should have moved left.'
+    );
+
+    monster_tile.moveTo(2, 2);
+    monster_tile.XFirst = false;
+    monster_tile.moveTowards(0, 4); // bottom left
+    assert.equal(
+      monster_tile.position().toString(),
+      [2, 3].toString(),
+      'should have moved down.'
+    );
+
+
+    TDP.fieldInit(TestData.source);
+
+  }
+);
 
