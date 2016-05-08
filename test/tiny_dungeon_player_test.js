@@ -31,6 +31,18 @@ QUnit.test(
 );
 
 QUnit.test(
+  'should know about its monsters',
+  function(assert) {
+    assert.ok(TDP.monsters, 'should have an array of monsters');
+    assert.equal(
+      TDP.monsters[0].type,
+      'monster',
+      'should have at least one monster'
+    )
+  }
+);
+
+QUnit.test(
   'should have links to UI elements',
   function( assert ) {
     assert.ok(TDP.UI.board);
