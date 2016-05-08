@@ -40,12 +40,14 @@ QUnit.test(
   function (assert) {
     // the one on the grid
     var player_tile = TDP.field.tileAt(7, 8);
+    var turns = TDP.turns;
     player_tile.moveUp();
     assert.equal(
       player_tile.position().toString(),
       [7, 7].toString(),
       'should move up 1 space when moveUp is called'
     );
+    assert.equal(TDP.turns, turns + 1, 'should be on the next turn');
     player_tile.moveDown();
   }
 );
@@ -55,12 +57,14 @@ QUnit.test(
   function (assert) {
     // the one on the grid
     var player_tile = TDP.field.tileAt(7, 8);
+    var turns = TDP.turns;
     player_tile.moveDown();
     assert.equal(
       player_tile.position().toString(),
       [7, 9].toString(),
       'should move up 1 space when moveDown is called'
     );
+    assert.equal(TDP.turns, turns + 1, 'should be on the next turn');
     player_tile.moveUp();
   }
 );
@@ -70,12 +74,14 @@ QUnit.test(
   function (assert) {
     // the one on the grid
     var player_tile = TDP.field.tileAt(7, 8);
+    var turns = TDP.turns;
     player_tile.moveRight();
     assert.equal(
       player_tile.position().toString(),
       [8, 8].toString(),
       'should move up 1 space when moveRight is called'
     );
+    assert.equal(TDP.turns, turns + 1, 'should be on the next turn');
     player_tile.moveLeft();
   }
 );
@@ -85,13 +91,42 @@ QUnit.test(
   function (assert) {
     // the one on the grid
     var player_tile = TDP.field.tileAt(7, 8);
+    var turns = TDP.turns;
     player_tile.moveLeft();
     assert.equal(
       player_tile.position().toString(),
       [6, 8].toString(),
       'should move up 1 space when moveLeft is called'
     );
+    assert.equal(TDP.turns, turns + 1, 'should be on the next turn');
     player_tile.moveRight();
   }
 );
+
+QUnit.test(
+  "should know if it's alive or dead",
+  function(assert) {
+    TDP.set_health(10);
+    assert.ok(
+      TestData.player_tile.isAlive(),
+      "should know it's alive"
+    );
+    assert.notOk(
+      TestData.player_tile.isDead(),
+      "should know it's not dead"
+    );
+
+    TDP.set_health(0);
+    assert.notOk(
+      TestData.player_tile.isAlive(),
+      "should know it's not alive"
+    );
+    assert.ok(
+      TestData.player_tile.isDead(),
+      "should know it's dead"
+    );
+  }
+);
+
+
 

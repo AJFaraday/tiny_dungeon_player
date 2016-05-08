@@ -1,4 +1,37 @@
 /*//////////////////
+    status_bar
+//////////////////*/
+
+div#TDP_status_bar {
+  width: 534px;
+
+  background-color: sandybrown;
+  border-radius: 6px;
+  height: 38px;
+  padding-left: 10px;
+  float:left;
+}
+
+span.TDP_sb_element {
+  font-size: 30px;
+  float: left;
+  top: 2px;
+  width: 32.33333333%;
+}
+
+span.TDP_sb_health {
+  text-align: left;
+}
+
+span.TDP_sb_turns {
+  text-align: center;
+}
+
+span.TDP_sb_score {
+  text-align: right;
+}
+
+/*//////////////////
     game board
 //////////////////*/
 
@@ -8,9 +41,11 @@ div#TDP_board {
   padding-bottom: 10px;
 }
 
-div.TDP_board_inner {}
+div.TDP_board_inner {
+}
 
-div.TDP_board_row {}
+div.TDP_board_row {
+}
 
 div.TDP_board_tile {
   width: 42px;

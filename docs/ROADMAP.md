@@ -7,8 +7,8 @@ Version 0
 A working game, using default input data.
 
 * On-page readout
-* Health, damage, hit chance
 * Constant display of score, health, turns
+* Health, damage, hit chance
 * Object interactions
 ** Food improves health
 ** Monuments provide special attack

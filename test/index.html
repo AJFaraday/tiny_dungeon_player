@@ -18,12 +18,14 @@
     <!-- TDP entities -->
     <script src="../lib/tdp/tiny_dungeon_player.js"></script>
     <script src="../lib/tdp/utils.js"></script>
+    <script src="../lib/tdp/status_bar.js"></script>
     <script src="../lib/tdp/ui.js"></script>
     <script src="../lib/tdp/console.js"></script>
     <script src="../lib/tdp/data/tiles.js"></script>
     <script src="../lib/tdp/commands/tile_interactions.js"></script>
     <script src="../lib/tdp/commands/key_events.js"></script>
-    <script src="../lib/tdp/commands/player_actions.js"></script>
+    <script src="../lib/tdp/tile_components/player_actions.js"></script>
+    <script src="../lib/tdp/tile_components/movement.js"></script>
 
     <script src="../lib/tdp/constructors/field.js"></script>
     <script src="../lib/tdp/constructors/tile.js"></script>
@@ -35,6 +37,7 @@
     <!-- TDP entity tests -->
     <script src="./tile_test.js"></script>
     <script src="./console_test.js"></script>
+    <script src="./status_bar_test.js"></script>
     <script src="./tiles/wall_tile_test.js"></script>
     <script src="./tiles/floor_tile_test.js"></script>
     <script src="./tiles/door_tile_test.js"></script>
@@ -53,8 +56,7 @@
     <div id="qunit"></div>
     <div id="qunit-fixture"></div>
 
-    <div id="TDP_board"></div>
-    <div id="TDP_readout"></div>
+    <div id="TDP"></div>
 
   </body>
 </html>
