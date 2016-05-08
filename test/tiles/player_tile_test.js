@@ -128,5 +128,17 @@ QUnit.test(
   }
 );
 
-
+QUnit.test(
+  'should not move if it is dead',
+  function(assert) {
+    var player_tile = TDP.field.tileAt(7, 8);
+    TDP.set_health(0);
+    assert.equal(
+      player_tile.position().toString(),
+      [7, 8].toString(),
+      'should not have gone anywhere'
+    );
+    TDP.set_health(10)
+  }
+);
 

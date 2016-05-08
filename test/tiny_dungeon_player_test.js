@@ -110,6 +110,7 @@ QUnit.test(
       '😵',
       'it should show dead face.'
     );
+    TDP.set_health(10);
   }
 );
 
