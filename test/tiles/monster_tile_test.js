@@ -119,3 +119,105 @@ QUnit.test(
 
 
 
+QUnit.test(
+  'should attack a monster (hitting it)',
+  function(assert) {
+    var player_tile = TDP.field.tileAt(7, 8);
+    var monster_tile = TDP.field.tileAt(2, 5);
+    // ensure hit will be true
+    player_tile.willHit = function() {return true};
+    // clear readout
+    TDP.UI.readout.html('');
+
+    var starting_health = monster_tile.health;
+    console.log(monster_tile.health);
+    monster_tile.interaction(monster_tile, player_tile);
+
+    assert.equal(
+      monster_tile.health,
+      starting_health - player_tile.damage
+    );
+    assert.ok(
+      (TDP.UI.readout.html().indexOf('Attacking '+ monster_tile.source +'!') > 1),
+      "should show that you're attacking in the readout"
+    );
+    assert.ok(
+      (TDP.UI.readout.html().indexOf('You did ' + player_tile.damage + ' damage!') >= 0),
+      "should show that you dealt damage in the readout"
+    );
+    assert.ok(
+      (TDP.UI.readout.html().indexOf('It has ' + monster_tile.health + ' health left.') >= 0),
+      "should show how much health is left in the readout"
+    );
+  }
+);
+
+QUnit.test(
+  'should attack a monster (killing it)',
+  function(assert) {
+    var player_tile = TDP.field.tileAt(7, 8);
+    var monster_tile = TDP.field.tileAt(2, 5);
+    monster_tile.health = 1;
+    // ensure hit will be true
+    player_tile.willHit = function() {return true};
+    // clear readout
+    TDP.UI.readout.html('');
+
+    var starting_health = monster_tile.health;
+    console.log(monster_tile.health);
+    monster_tile.interaction(monster_tile, player_tile);
+
+    assert.equal(
+      monster_tile.health,
+      starting_health - player_tile.damage
+    );
+    assert.ok(monster_tile.isDead(), 'it should have died.');
+    assert.ok(
+      (TDP.UI.readout.html().indexOf('Attacking '+ monster_tile.source +'!') > 1),
+      "should show that you're attacking in the readout"
+    );
+    assert.ok(
+      (TDP.UI.readout.html().indexOf('You did ' + player_tile.damage + ' damage!') >= 0),
+      "should show that you did damage in the readout"
+    );
+    assert.ok(
+      (TDP.UI.readout.html().indexOf('You killed it!') >= 0),
+      "should show you killed it in the readout"
+    );
+
+    TDP.fieldInit(TestData.source);
+  }
+);
+
+
+QUnit.test(
+  'should attack a monster (missing it)',
+  function(assert) {
+    var player_tile = TDP.field.tileAt(7, 8);
+    var monster_tile = TDP.field.tileAt(2, 5);
+    monster_tile.health = 1;
+    // ensure hit will be false
+    player_tile.willHit = function() {return false};
+    // clear readout
+    TDP.UI.readout.html('');
+
+    var starting_health = monster_tile.health;
+    console.log(monster_tile.health);
+    monster_tile.interaction(monster_tile, player_tile);
+
+    assert.equal(
+      monster_tile.health,
+      starting_health
+    );
+    assert.ok(
+      (TDP.UI.readout.html().indexOf('Attacking '+ monster_tile.source +'!') > 1),
+      "should show that you're attacking in the readout"
+    );
+    assert.ok(
+      (TDP.UI.readout.html().indexOf('You missed!') >= 0),
+      "should show that you missed in the readout"
+    );
+  }
+);
+
+
