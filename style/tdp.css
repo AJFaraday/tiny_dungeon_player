@@ -47,4 +47,14 @@ span.TDP_readout_minor {
   color: #666666;
 }
 
+div.TDP_readout_message:nth-child(4) {
+  opacity: 0.75;
+}
 
+div.TDP_readout_message:nth-child(5) {
+  opacity: 0.5;
+}
+
+div.TDP_readout_message:nth-child(6) {
+  opacity: 0.25;
+}
