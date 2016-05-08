@@ -1,12 +1,16 @@
-div#TDP_board { }
+/*//////////////////
+    game board
+//////////////////*/
 
-div#TDP_readout { }
-
-div.TDP_board_inner {  }
-
-div.TDP_board_row {
-
+div#TDP_board {
+  float: left;
+  width: 550px;
+  padding-bottom: 10px;
 }
+
+div.TDP_board_inner {}
+
+div.TDP_board_row {}
 
 div.TDP_board_tile {
   width: 42px;
@@ -14,6 +18,33 @@ div.TDP_board_tile {
   font-size: 40px;
   float: left;
   position: relative;
+}
+
+/*///////////////////
+   on-page readout
+///////////////////*/
+
+div#TDP_readout {
+  float: left;
+  height: 406px;
+  width: 530px;
+
+  border: 2px solid black;
+  padding: 5px;
+  border-radius: 6px;
+}
+
+div.TDP_readout_message {
+
+}
+
+span.TDP_readout_major {
+  font-size: 40px;
+  color: saddlebrown;
+}
+
+span.TDP_readout_minor {
+  color: #666666;
 }
 
 
