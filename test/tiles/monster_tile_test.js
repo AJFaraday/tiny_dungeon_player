@@ -92,9 +92,9 @@ QUnit.test(
     TDP.field.tileAt(2, 1).replaceWith(
       new TDP.constructors.Tile(TDP.data.named_tiles.book)
     );
-    assert.notOk(
+    assert.ok(
       monster_tile.canSeePlayer(),
-      'should not be able to see the player'
+      'should be able to see the player'
     );
 
     /*
@@ -108,9 +108,9 @@ QUnit.test(
     TDP.field.tileAt(1, 2).replaceWith(
       new TDP.constructors.Tile(TDP.data.named_tiles.book)
     );
-    assert.notOk(
+    assert.ok(
       monster_tile.canSeePlayer(),
-      'should not be able to see the player'
+      'should be able to see the player'
     );
 
     TDP.fieldInit(TestData.source);
@@ -311,6 +311,113 @@ QUnit.test(
 
     TDP.fieldInit(TestData.source);
 
+  }
+);
+
+QUnit.test(
+  'should move towards player when it can see player',
+  function (assert) {
+    TDP.fieldInit(TestData.seeing_scenario);
+    var monster_tile = TDP.field.tileAt(0, 0);
+    monster_tile.XFirst = true;
+    /*
+     🐘⬜⬜
+     ⬜⬜⬜
+     ⬜⬜🤔
+     */
+    TDP.new_turn();
+    assert.equal(
+      monster_tile.position().toString(),
+      [1, 0].toString(),
+      'should have taken a step towards the player'
+    );
+
+    // And now, standing next to the player
+    monster_tile.moveTo(1, 2);
+    monster_tile.willHit = function () {
+      return true;
+    };
+    TDP.UI.readout.html('');
+    var player_health = TDP.health;
+    /*
+     ⬜⬜⬜
+     ⬜⬜⬜
+     ⬜🐘🤔
+     */
+
+    TDP.new_turn();
+    assert.equal(
+      TDP.health,
+      (player_health - monster_tile.damage),
+      'should have done its damage to the player'
+    );
+
+    assert.ok(
+      (TDP.UI.readout.html().indexOf('🐘 attacked you!') >= 0),
+      'should say it attacked you in the readout.'
+    );
+
+    assert.ok(
+      (TDP.UI.readout.html().indexOf('It did ' + monster_tile.damage +' damage!') >= 0),
+      'should say how much damage it did'
+    );
+    assert.ok(
+      (TDP.UI.readout.html().indexOf('You have '+ TDP.health + ' health left.') >= 0),
+      'should say how much you have left'
+    );
+
+    // And now, it misses.
+    monster_tile.willHit = function () {
+      return false;
+    };
+    TDP.UI.readout.html('');
+    /*
+     ⬜⬜⬜
+     ⬜⬜⬜
+     ⬜🐘🤔
+     */
+
+    TDP.new_turn();
+    assert.ok(
+      (TDP.UI.readout.html().indexOf('🐘 attacked you!') >= 0),
+      'should say it attacked you in the readout.'
+    );
+
+    assert.ok(
+      (TDP.UI.readout.html().indexOf('It missed!') >= 0),
+      'should say it missed'
+    );
+    
+    
+    // And now, it kills you;
+    TDP.set_health(1);
+    monster_tile.willHit = function () {
+      return true;
+    };
+    TDP.UI.readout.html('');
+    /*
+     ⬜⬜⬜
+     ⬜⬜⬜
+     ⬜🐘🤔
+     */
+
+    TDP.new_turn();
+    assert.ok(
+      (TDP.UI.readout.html().indexOf('🐘 attacked you!') >= 0),
+      'should say it attacked you in the readout.'
+    );
+
+    assert.ok(
+      (TDP.UI.readout.html().indexOf('It killed you!') >= 0),
+      'should say it killed you'
+    );
+
+    assert.ok(
+      TDP.player.isDead(),
+      'and it should actually kill you'
+    );
+    
+    TDP.fieldInit(TestData.source);
   }
 );
 
