@@ -1,6 +1,7 @@
 QUnit.module('TDP.constructors.Tile monster tile');
 
-var monster_tile = TestData.monster_tile;
+TDP.init(TestData.source);
+var monster_tile = TDP.field.tileAt(2, 5);
 
 QUnit.test(
   'should have a type of "monster"',
@@ -22,7 +23,7 @@ QUnit.test(
 QUnit.test(
   'should have an interaction',
   function (assert) {
-    assert.ok(TestData.monster_tile.hasInteraction, 'should have an interaction');
+    assert.ok(monster_tile.hasInteraction, 'should have an interaction');
   }
 );
 
@@ -228,7 +229,6 @@ QUnit.test(
   function (assert) {
     TDP.fieldInit(TestData.moving_scenario);
     var monster_tile = TDP.field.tileAt(2, 2);
-    console.log(monster_tile);
 
     /*
      ⬜⬜⬜⬜⬜
@@ -387,8 +387,8 @@ QUnit.test(
       (TDP.UI.readout.html().indexOf('It missed!') >= 0),
       'should say it missed'
     );
-    
-    
+
+
     // And now, it kills you;
     TDP.set_health(1);
     monster_tile.willHit = function () {
@@ -416,7 +416,7 @@ QUnit.test(
       TDP.player.isDead(),
       'and it should actually kill you'
     );
-    
+
     TDP.fieldInit(TestData.source);
   }
 );
