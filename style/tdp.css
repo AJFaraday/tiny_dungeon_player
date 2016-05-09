@@ -55,6 +55,17 @@ div.TDP_board_tile {
   position: relative;
 }
 
+@keyframes flash {
+  from {opacity:1;}
+  to {opacity: 0;}
+}
+
+.flashing {
+  animation-name: flash;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
 div.TDP_board_tile_overlay {
   width: 42px;
   height: 42px;

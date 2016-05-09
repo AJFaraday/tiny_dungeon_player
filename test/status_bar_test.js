@@ -73,7 +73,7 @@ QUnit.test(
     TDP.status_bar.set_health(0);
     assert.equal(
       TDP.status_bar.health_element.html(),
-      '😵',
+      '💀',
       'should show a dead emoji'
     );
   }

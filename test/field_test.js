@@ -110,8 +110,8 @@ QUnit.test(
       'should have the expected HTML class'
     );
     assert.equal(
-      html_tile.html(),
-      tile.source,
+      html_tile.html().indexOf(tile.source),
+      0,
       'should contain the emoji for that tile'
     );
   }

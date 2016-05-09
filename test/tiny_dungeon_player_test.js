@@ -119,7 +119,7 @@ QUnit.test(
     );
     assert.equal(
       TDP.status_bar.health_element.html(),
-      '😵',
+      '💀',
       'it should show dead face.'
     );
     TDP.set_health(10);
