@@ -55,6 +55,15 @@ div.TDP_board_tile {
   position: relative;
 }
 
+div.TDP_board_tile_overlay {
+  width: 42px;
+  height: 42px;
+  font-size: 40px;
+  position:absolute;
+  top: 0;
+  left: 0;
+}
+
 /*///////////////////
    on-page readout
 ///////////////////*/
