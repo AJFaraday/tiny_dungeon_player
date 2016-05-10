@@ -7,7 +7,6 @@ Version 0
 A working game, using default input data.
 
 * Object interactions
-** Monuments provide special attack
 ** Items improve score
 *** some items have bonuses
 

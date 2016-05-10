@@ -35,3 +35,31 @@ QUnit.test(
     );
   }
 );
+
+QUnit.test(
+  'should run the deafult interaction, gain points.',
+  function(assert) {
+    var item = TDP.field.tileAt(12, 0);
+    var starting_score = TDP.score;
+    TDP.UI.readout.html('');
+    item.interaction(item, TDP.player);
+    assert.equal(
+      TDP.score,
+      starting_score + item.score_value,
+      'should have increased the score'
+    );
+
+    var major_message = "You picked up the " + item.source;
+    var minor_message = "You scored 5 points.";
+    assert.ok(
+      TDP.UI.readout.html().indexOf(major_message) >= 0,
+      'should say the Wow thing.'
+    );
+    assert.ok(
+      TDP.UI.readout.html().indexOf(minor_message) >= 0,
+      'should tell you about the miss.'
+    );
+
+    TDP.fieldInit(TestData.source);
+  }
+);
