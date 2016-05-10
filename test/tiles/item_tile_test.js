@@ -50,7 +50,7 @@ QUnit.test(
     );
 
     var major_message = "You picked up the " + item.source;
-    var minor_message = "You scored 5 points.";
+    var minor_message = "You scored " + item.score_value + " points.";
     assert.ok(
       TDP.UI.readout.html().indexOf(major_message) >= 0,
       'should say the Wow thing.'
