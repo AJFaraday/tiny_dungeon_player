@@ -142,3 +142,61 @@ QUnit.test(
   }
 );
 
+QUnit.test(
+  'should have a special attack',
+  function(assert) {
+    TDP.fieldInit(TestData.source);
+
+    // first. nowhere near the monsters.
+    TDP.player.special_attacks = 1;
+    TDP.player.moveTo(8, 8);
+    TDP.UI.readout.html('');
+    TDP.player.specialAttack();
+    var major_message = "Wow! Look at that!";
+    var minor_message = "You missed all the monsters, tho.";
+    assert.ok(
+      TDP.UI.readout.html().indexOf(major_message) >= 0,
+      'should say the Wow thing.'
+    );
+    assert.ok(
+      TDP.UI.readout.html().indexOf(minor_message) >= 0,
+      'should tell you about the miss.'
+    );
+
+    // Now, in range of one monster
+    TDP.player.special_attacks = 1;
+    TDP.player.moveTo(6, 6);
+    TDP.UI.readout.html('');
+    TDP.player.specialAttack();
+    major_message = "Wow! Look at that!";
+    minor_message = "It engulfed the 👻";
+    assert.ok(
+      TDP.UI.readout.html().indexOf(major_message) >= 0,
+      'should say the Wow thing.'
+    );
+    assert.ok(
+      TDP.UI.readout.html().indexOf(minor_message) >= 0,
+      'should tell you who it hit.'
+    );
+
+    // Now, in range of four of them
+    TDP.fieldInit(TestData.source);
+    TDP.player.special_attacks = 1;
+    TDP.player.moveTo(2, 6);
+    TDP.UI.readout.html('');
+    TDP.player.specialAttack();
+    major_message = "Wow! Look at that!";
+    minor_message = "It engulfed all these monsters 👻, 🐘, 🐘, 👻";
+    console.log(TDP.UI.readout.html());
+    assert.ok(
+      TDP.UI.readout.html().indexOf(major_message) >= 0,
+      'should say the Wow thing.'
+    );
+    assert.ok(
+      TDP.UI.readout.html().indexOf(minor_message) >= 0,
+      'should tell you who it hit.'
+    );
+
+  }
+);
+
