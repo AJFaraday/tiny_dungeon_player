@@ -318,6 +318,7 @@ QUnit.test(
   'should move towards player when it can see player',
   function (assert) {
     TDP.fieldInit(TestData.seeing_scenario);
+    TDP.field.drawBoard();
     var monster_tile = TDP.field.tileAt(0, 0);
     monster_tile.XFirst = true;
     /*
