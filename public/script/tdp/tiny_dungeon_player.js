@@ -10,7 +10,18 @@ var TDP = {
     this.fieldInit(tweet);
   },
 
+  startFromSource: function (tweet) {
+    this.fieldInit(tweet);
+    this.UI.readout.html(''); 
+    this.field.drawBoard();
+  },
+
+  restart: function() {
+    this.startFromSource(this.source);
+  },
+
   fieldInit: function (tweet) {
+    this.source = tweet;
     this.field = new TDP.constructors.Field(tweet);
     this.getPlayer();
     this.getMonsters();

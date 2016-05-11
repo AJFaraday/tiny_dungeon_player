@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tiny Dungeon Player</title>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="style/tdp.css">
+
+    <script src="script/jquery/jquery-2.2.3.min.js"></script>
+
+    <!-- TODO package all this together -->
+    <script src="script/tdp/tiny_dungeon_player.js"></script>
+    <script src="script/tdp/utils.js"></script>
+    <script src="script/tdp/status_bar.js"></script>
+    <script src="script/tdp/end_game_panel.js"></script>
+    <script src="script/tdp/ui.js"></script>
+    <script src="script/tdp/console.js"></script>
+    <script src="script/tdp/data/tiles.js"></script>
+    <script src="script/tdp/data/overlays.js"></script>
+    <script src="script/tdp/data/item_types.js"></script>
+    <script src="script/tdp/commands/tile_interactions.js"></script>
+    <script src="script/tdp/commands/key_events.js"></script>
+    <script src="script/tdp/commands/item_effects.js"></script>
+    <script src="script/tdp/tile_components/movement.js"></script>
+    <script src="script/tdp/tile_components/attacking.js"></script>
+    <script src="script/tdp/tile_components/creature_health.js"></script>
+    <script src="script/tdp/tile_components/player_components.js"></script>
+    <script src="script/tdp/tile_components/monster_components.js"></script>
+    <script src="script/tdp/tile_components/monument_components.js"></script>
+    <script src="script/tdp/tile_components/food_components.js"></script>
+    <script src="script/tdp/tile_components/item_components.js"></script>
+    <script src="script/tdp/constructors/field.js"></script>
+    <script src="script/tdp/constructors/tile.js"></script>
+
+    <!-- TODO a less canned source -->
+    <script src="../test/test_data.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        TDP.field.drawBoard();
+      });
+    </script>
+
+  </head>
+  <body>
+    <h1>Tiny Dungeon Player</h1>
+
+    <div id="TDP"></div>
+
+  </body>
+</html>

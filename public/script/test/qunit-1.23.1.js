@@ -229,7 +229,7 @@ var config = {
 	// very useful in combination with "Hide passed tests" checked
 	reorder: true,
 
-	// By default, modify document.title when suite is done
+	// By default, modify document.end_game_title when suite is done
 	altertitle: true,
 
 	// HTML Reporter: collapse every test except the first failing test
@@ -2519,13 +2519,13 @@ function getUrlConfigHtml() {
 				"' name='" + escaped + "' type='checkbox'" +
 				( val.value ? " value='" + escapeText( val.value ) + "'" : "" ) +
 				( config[ val.id ] ? " checked='checked'" : "" ) +
-				" title='" + escapedTooltip + "' /><label for='qunit-urlconfig-" + escaped +
-				"' title='" + escapedTooltip + "'>" + val.label + "</label>";
+				" end_game_title='" + escapedTooltip + "' /><label for='qunit-urlconfig-" + escaped +
+				"' end_game_title='" + escapedTooltip + "'>" + val.label + "</label>";
 		} else {
 			urlConfigHtml += "<label for='qunit-urlconfig-" + escaped +
-				"' title='" + escapedTooltip + "'>" + val.label +
+				"' end_game_title='" + escapedTooltip + "'>" + val.label +
 				": </label><select id='qunit-urlconfig-" + escaped +
-				"' name='" + escaped + "' title='" + escapedTooltip + "'><option></option>";
+				"' name='" + escaped + "' end_game_title='" + escapedTooltip + "'><option></option>";
 
 			if ( QUnit.is( "array", val.value ) ) {
 				for ( j = 0; j < val.value.length; j++ ) {
@@ -2806,7 +2806,7 @@ function appendInterface() {
 
 	if ( qunit ) {
 		qunit.innerHTML =
-			"<h1 id='qunit-header'>" + escapeText( document.title ) + "</h1>" +
+			"<h1 id='qunit-header'>" + escapeText( document.end_game_title ) + "</h1>" +
 			"<h2 id='qunit-banner'></h2>" +
 			"<div id='qunit-testrunner-toolbar'></div>" +
 			appendFilteredTest() +
@@ -2843,15 +2843,15 @@ function appendTest( name, testId, moduleName ) {
 		return;
 	}
 
-	title = document.createElement( "strong" );
-	title.innerHTML = getNameHtml( name, moduleName );
+	end_game_title = document.createElement( "strong" );
+	end_game_title.innerHTML = getNameHtml( name, moduleName );
 
 	rerunTrigger = document.createElement( "a" );
 	rerunTrigger.innerHTML = "Rerun";
 	rerunTrigger.href = setUrl( { testId: testId } );
 
 	testBlock = document.createElement( "li" );
-	testBlock.appendChild( title );
+	testBlock.appendChild( end_game_title );
 	testBlock.appendChild( rerunTrigger );
 	testBlock.id = "qunit-test-output-" + testId;
 
@@ -2915,13 +2915,13 @@ QUnit.done( function( details ) {
 		id( "qunit-testresult" ).innerHTML = html;
 	}
 
-	if ( config.altertitle && document.title ) {
+	if ( config.altertitle && document.end_game_title ) {
 
-		// Show ✖ for good, ✔ for bad suite result in title
+		// Show ✖ for good, ✔ for bad suite result in end_game_title
 		// use escape sequences in case file gets loaded with non-utf-8-charset
-		document.title = [
+		document.end_game_title = [
 			( details.failed ? "\u2716" : "\u2714" ),
-			document.title.replace( /^[\u2714\u2716] /i, "" )
+			document.end_game_title.replace( /^[\u2714\u2716] /i, "" )
 		].join( " " );
 	}
 

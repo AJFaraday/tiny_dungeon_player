@@ -13,18 +13,22 @@ TDP.tile_components.player_components = function () {
 
   this.moveToTile = function (tile) {
     if (TDP.player.isAlive()) {
-      if (tile) {
-        if (tile.hasInteraction) {
-          tile.interaction(tile, this);
-          TDP.new_turn();
-        } else if (tile.passable) {
-          this.moveToPosition(tile.position());
-          TDP.new_turn();
-        } else {
-          TDP.console.log("You can't go there!", "It's a wall.")
-        }
+      if (TDP.won()) {
+        TDP.console.log('You won! Stop moving!')
       } else {
-        TDP.console.log("You can't go there!", 'Edge of the map.')
+        if (tile) {
+          if (tile.hasInteraction) {
+            tile.interaction(tile, this);
+            TDP.new_turn();
+          } else if (tile.passable) {
+            this.moveToPosition(tile.position());
+            TDP.new_turn();
+          } else {
+            TDP.console.log("You can't go there!", "It's a wall.")
+          }
+        } else {
+          TDP.console.log("You can't go there!", 'Edge of the map.')
+        }
       }
     } else {
       TDP.console.log("You're dead. Stay there!")
@@ -70,7 +74,7 @@ TDP.tile_components.player_components = function () {
           "Wow! Look at that!",
           "It engulfed the " + monster_emoji
         );
-      } else if(monster_emoji.length > 1) {
+      } else if (monster_emoji.length > 1) {
         TDP.console.log(
           "Wow! Look at that!",
           "It engulfed all these monsters " + monster_emoji.join(', ')

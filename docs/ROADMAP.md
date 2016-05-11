@@ -6,15 +6,17 @@ Version 0
 
 A working game, using default input data.
 
-* Object interactions
-** Items improve score
-*** some items have bonuses
+* State for game end
+* Restart action
 
 
 Version 0.1
 -----------
 
-Grab tweets by id, read from the URL.
+Getting stuff from twitter
+
+* Get latest tweet
+* Get next/last/replay
 
 Version 0.2
 -----------
