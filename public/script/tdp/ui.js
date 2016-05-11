@@ -50,7 +50,6 @@ TDP.UI = {
 
     this.end_game_title = $('<h1/>');
     this.end_game_title.addClass('TDP_end_game_title');
-    this.end_game_title.html('You won!'); // TODO systematically decide
     this.overlay.append(this.end_game_title);
 
     var button_panel = $('<div/>');

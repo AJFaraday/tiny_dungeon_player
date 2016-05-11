@@ -91,6 +91,18 @@ var TDP = {
       this.changeScore(-1)
     }
     TDP.field.drawBoard();
+    this.endIfFinished();
+  },
+
+  endIfFinished: function() {
+    var panel = TDP.end_game_panel;
+    if (this.won()) {
+      panel.setTitle('You won!');
+      panel.show();
+    } else if (this.lost()) {
+      panel.setTitle('You lost!');
+      panel.show();
+    }
   },
 
   changeScore: function(points) {
