@@ -7,7 +7,7 @@ TDP.status_bar = {
     status_bar.append(this.init_score_element());
   },
 
-  set_health: function(health) {
+  setHealth: function(health) {
     if (health <= 0) {
       this.health_element.html('💀');
     } else {
@@ -15,7 +15,7 @@ TDP.status_bar = {
     }
   },
   
-  set_turns: function(turns) {
+  setTurns: function(turns) {
     if (turns == 1) {
       this.turns_element.html('1 turn');
     } else {
@@ -23,7 +23,7 @@ TDP.status_bar = {
     }
   },
   
-  set_score: function(score) {
+  setScore: function(score) {
     this.score_element.html('Score: ' + score);
   },
   

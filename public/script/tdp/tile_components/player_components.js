@@ -19,10 +19,10 @@ TDP.tile_components.player_components = function () {
         if (tile) {
           if (tile.hasInteraction) {
             tile.interaction(tile, this);
-            TDP.new_turn();
+            TDP.newTurn();
           } else if (tile.passable) {
             this.moveToPosition(tile.position());
-            TDP.new_turn();
+            TDP.newTurn();
           } else {
             TDP.console.log("You can't go there!", "It's a wall.")
           }
@@ -54,7 +54,7 @@ TDP.tile_components.player_components = function () {
     var monster_emoji = [];
     $.each(entities.monsters, function (i, monster) {
       monster.dealDamage(TDP.player.special_attack_damage);
-      TDP.change_score(monster.score_value);
+      TDP.changeScore(monster.score_value);
       monster_emoji = monster_emoji.concat(monster.source);
     });
     return monster_emoji;
@@ -85,7 +85,7 @@ TDP.tile_components.player_components = function () {
           "You missed all the monsters, tho."
         );
       }
-      TDP.new_turn();
+      TDP.newTurn();
     }
   };
 
@@ -102,10 +102,10 @@ TDP.tile_components.player_components = function () {
   };
 
   this.dealDamage = function (amount) {
-    TDP.set_health(TDP.health - amount);
+    TDP.setHealth(TDP.health - amount);
   };
 
   this.heal = function (amount) {
-    TDP.set_health(TDP.health + amount);
+    TDP.setHealth(TDP.health + amount);
   };
 };

@@ -53,7 +53,7 @@ QUnit.test(
 QUnit.test(
   'should be able to set the score',
   function (assert) {
-    TDP.set_score(10);
+    TDP.setScore(10);
     assert.equal(
       TDP.score,
       10,
@@ -70,7 +70,7 @@ QUnit.test(
 QUnit.test(
   'should be able to set the turns',
   function (assert) {
-    TDP.set_turns(5);
+    TDP.setTurns(5);
     assert.equal(
       TDP.turns,
       5,
@@ -82,7 +82,7 @@ QUnit.test(
       'it should show the turns.'
     );
 
-    TDP.set_turns(1);
+    TDP.setTurns(1);
     assert.equal(
       TDP.turns,
       1,
@@ -99,7 +99,7 @@ QUnit.test(
 QUnit.test(
   'should be able to set the health',
   function (assert) {
-    TDP.set_health(10);
+    TDP.setHealth(10);
     assert.equal(
       TDP.health,
       10,
@@ -111,7 +111,7 @@ QUnit.test(
       'it should show the health.'
     );
 
-    TDP.set_health(0);
+    TDP.setHealth(0);
     assert.equal(
       TDP.health,
       0,
@@ -122,7 +122,7 @@ QUnit.test(
       '💀',
       'it should show dead face.'
     );
-    TDP.set_health(10);
+    TDP.setHealth(10);
   }
 );
 
@@ -141,13 +141,13 @@ QUnit.test(
 QUnit.test(
   "should know when you've lost",
   function (assert) {
-    TDP.set_health(0);
+    TDP.setHealth(0);
 
     assert.ok(TDP.finished(), "it knows the game is over");
     assert.ok(TDP.lost(), "it knows the player has lost");
     assert.notOk(TDP.won(), "it knows the player has not won");
 
-    TDP.set_health(10);
+    TDP.setHealth(10);
   }
 );
 

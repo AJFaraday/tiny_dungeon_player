@@ -56,21 +56,21 @@ QUnit.test(
 QUnit.test(
   'set health',
   function (assert) {
-    TDP.status_bar.set_health(20);
+    TDP.status_bar.setHealth(20);
     assert.equal(
       TDP.status_bar.health_element.html(),
       'Health: 20',
       'should read out 20 health'
     );
 
-    TDP.status_bar.set_health(10);
+    TDP.status_bar.setHealth(10);
     assert.equal(
       TDP.status_bar.health_element.html(),
       'Health: 10',
       'should read out 10 health'
     );
 
-    TDP.status_bar.set_health(0);
+    TDP.status_bar.setHealth(0);
     assert.equal(
       TDP.status_bar.health_element.html(),
       '💀',
@@ -82,21 +82,21 @@ QUnit.test(
 QUnit.test(
   'set turns',
   function (assert) {
-    TDP.status_bar.set_turns(0);
+    TDP.status_bar.setTurns(0);
     assert.equal(
       TDP.status_bar.turns_element.html(),
       '0 turns',
       'should show 0 turns'
     );
 
-    TDP.status_bar.set_turns(1);
+    TDP.status_bar.setTurns(1);
     assert.equal(
       TDP.status_bar.turns_element.html(),
       '1 turn',
       'should show 1 turn'
     );
 
-    TDP.status_bar.set_turns(5);
+    TDP.status_bar.setTurns(5);
     assert.equal(
       TDP.status_bar.turns_element.html(),
       '5 turns',
@@ -108,14 +108,14 @@ QUnit.test(
 QUnit.test(
   'set score',
   function (assert) {
-    TDP.status_bar.set_score(0);
+    TDP.status_bar.setScore(0);
     assert.equal(
       TDP.status_bar.score_element.html(),
       'Score: 0',
       'should show 0 score'
     );
 
-    TDP.status_bar.set_score(5);
+    TDP.status_bar.setScore(5);
     assert.equal(
       TDP.status_bar.score_element.html(),
       'Score: 5',

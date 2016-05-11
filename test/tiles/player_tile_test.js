@@ -106,7 +106,7 @@ QUnit.test(
 QUnit.test(
   "should know if it's alive or dead",
   function(assert) {
-    TDP.set_health(10);
+    TDP.setHealth(10);
     assert.ok(
       TestData.player_tile.isAlive(),
       "should know it's alive"
@@ -116,7 +116,7 @@ QUnit.test(
       "should know it's not dead"
     );
 
-    TDP.set_health(0);
+    TDP.setHealth(0);
     assert.notOk(
       TestData.player_tile.isAlive(),
       "should know it's not alive"
@@ -132,13 +132,13 @@ QUnit.test(
   'should not move if it is dead',
   function(assert) {
     var player_tile = TDP.field.tileAt(7, 8);
-    TDP.set_health(0);
+    TDP.setHealth(0);
     assert.equal(
       player_tile.position().toString(),
       [7, 8].toString(),
       'should not have gone anywhere'
     );
-    TDP.set_health(10)
+    TDP.setHealth(10)
   }
 );
 

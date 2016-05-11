@@ -12,7 +12,7 @@ TDP.commands.tile_interactions = {
       monster.dealDamage(player.damage);
       var small_message = 'You did ' + player.damage + ' damage!';
       if (monster.isDead()) {
-        TDP.change_score(monster.score_value);
+        TDP.changeScore(monster.score_value);
         var tile = TDP.field.tileAt(monster_position[0], monster_position[1]);
         tile.flash(TDP.data.overlays.player_kill);
         small_message = small_message.concat(' You killed it!');
@@ -33,19 +33,19 @@ TDP.commands.tile_interactions = {
 
   // The player eats the food, gaining health.
   food: function(food, player) {
-    TDP.change_score(food.score_value);
-    TDP.set_health(TDP.health + food.heal_value);
+    TDP.changeScore(food.score_value);
+    TDP.setHealth(TDP.health + food.heal_value);
     TDP.console.log(
       ('Mmmmmmm, ' + food.source),
       'You gained ' + food.heal_value + ' health.'
     );
-    TDP.change_score(food.score_value);
+    TDP.changeScore(food.score_value);
     player.moveToPosition(food.position());
   },
   
   monument: function(monument, player) {
     if (!monument.found) {
-      TDP.change_score(monument.score_value);
+      TDP.changeScore(monument.score_value);
       player.special_attacks += 1;
       monument.found = true;
       if (player.special_attacks == 1) {
@@ -74,7 +74,7 @@ TDP.commands.tile_interactions = {
   
   item: function(item, player) {
     item.effect(item, player);
-    TDP.change_score(item.score_value);
+    TDP.changeScore(item.score_value);
     player.moveToPosition(item.position());
   }
 

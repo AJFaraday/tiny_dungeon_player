@@ -326,7 +326,7 @@ QUnit.test(
      ⬜⬜⬜
      ⬜⬜🤔
      */
-    TDP.new_turn();
+    TDP.newTurn();
     assert.equal(
       monster_tile.position().toString(),
       [1, 0].toString(),
@@ -346,7 +346,7 @@ QUnit.test(
      ⬜🐘🤔
      */
 
-    TDP.new_turn();
+    TDP.newTurn();
     assert.equal(
       TDP.health,
       (player_health - monster_tile.damage),
@@ -378,7 +378,7 @@ QUnit.test(
      ⬜🐘🤔
      */
 
-    TDP.new_turn();
+    TDP.newTurn();
     assert.ok(
       (TDP.UI.readout.html().indexOf('🐘 attacked you!') >= 0),
       'should say it attacked you in the readout.'
@@ -391,7 +391,7 @@ QUnit.test(
 
 
     // And now, it kills you;
-    TDP.set_health(1);
+    TDP.setHealth(1);
     monster_tile.willHit = function () {
       return true;
     };
@@ -402,7 +402,7 @@ QUnit.test(
      ⬜🐘🤔
      */
 
-    TDP.new_turn();
+    TDP.newTurn();
     assert.ok(
       (TDP.UI.readout.html().indexOf('🐘 attacked you!') >= 0),
       'should say it attacked you in the readout.'

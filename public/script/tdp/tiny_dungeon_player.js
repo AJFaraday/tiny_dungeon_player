@@ -12,7 +12,7 @@ var TDP = {
 
   startFromSource: function (tweet) {
     this.fieldInit(tweet);
-    this.UI.readout.html(''); 
+    this.UI.readout.html('');
     this.field.drawBoard();
   },
 
@@ -25,9 +25,9 @@ var TDP = {
     this.field = new TDP.constructors.Field(tweet);
     this.getPlayer();
     this.getMonsters();
-    this.set_health(10);
-    this.set_turns(0);
-    this.set_score(0);
+    this.setHealth(10);
+    this.setTurns(0);
+    this.setScore(0);
   },
 
   getMonsters: function () {
@@ -63,9 +63,9 @@ var TDP = {
     );
   },
 
-  set_health: function (health) {
+  setHealth: function (health) {
     this.health = health;
-    TDP.status_bar.set_health(health);
+    TDP.status_bar.setHealth(health);
     if (health <= 0) {
       this.player.source = '💀';
       TDP.field.drawBoard();
@@ -74,13 +74,13 @@ var TDP = {
     }
   },
 
-  set_turns: function (turns) {
+  setTurns: function (turns) {
     this.turns = turns;
-    TDP.status_bar.set_turns(turns)
+    TDP.status_bar.setTurns(turns)
   },
 
-  new_turn: function () {
-    this.set_turns(this.turns + 1);
+  newTurn: function () {
+    this.setTurns(this.turns + 1);
     $.each(
       this.monsters,
       function (i, monster) {
@@ -88,18 +88,18 @@ var TDP = {
       }
     );
     if ((this.turns % 5) == 0) {
-      this.change_score(-1)
+      this.changeScore(-1)
     }
     TDP.field.drawBoard();
   },
 
-  change_score: function(points) {
-    this.set_score(this.score + points);
+  changeScore: function(points) {
+    this.setScore(this.score + points);
   },
 
-  set_score: function (score) {
+  setScore: function (score) {
     this.score = score;
-    TDP.status_bar.set_score(score)
+    TDP.status_bar.setScore(score)
   },
   
   
