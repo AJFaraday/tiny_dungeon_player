@@ -4,18 +4,38 @@ TDP.UI = {
     this.main = $('div#TDP');
 
     this.initMarkup();
-    
+
     TDP.status_bar.init();
-    TDP.end_game_panel.init(); 
+    TDP.end_game_panel.init();
   },
 
   buildStatusBar: function () {
     this.status_bar = $('<div>');
     this.status_bar.attr('id', 'TDP_status_bar');
     this.main.append(this.status_bar);
-    this.main.append('<br clear="both"/>');
   },
 
+  buildControlBar: function () {
+    var button;
+    this.control_bar = $('<div>');
+    this.control_bar.attr('id', 'TDP_control_bar');
+
+    $.each(
+      TDP.data.buttons,
+      function (i, button_data) {
+        button = $('<span>');
+        button.addClass('TDP_control_bar_button');
+        button.html(button_data.icon);
+        button.attr('title', button_data.tooltip);
+        button.on('click', function(e){
+          TDP.player[button_data.action]();
+        });
+        TDP.UI.control_bar.append(button);
+      }
+    );
+
+    this.main.append(this.control_bar);
+  },
 
   buildBoard: function () {
     this.board = $('<div>');
@@ -29,7 +49,7 @@ TDP.UI = {
     this.main.append(this.readout);
   },
 
-  buildButton: function (label, url, id, button_panel) {
+  buildEndGameButton: function (label, url, id, button_panel) {
     var button = $('<div/>');
     button.addClass('TDP_end_game_button');
     button.html(label);
@@ -56,15 +76,18 @@ TDP.UI = {
     button_panel.addClass('TDP_end_game_button_panel');
     this.overlay.append(button_panel);
 
-    this.buildButton('Back', '#', 'back_button', button_panel);
-    this.buildButton('Restart', '#', 'restart_button', button_panel);
-    this.buildButton('Next', '#', 'next_button', button_panel);
+    this.buildEndGameButton('Back', '#', 'back_button', button_panel);
+    this.buildEndGameButton('Restart', '#', 'restart_button', button_panel);
+    this.buildEndGameButton('Next', '#', 'next_button', button_panel);
 
     this.main.append(this.overlay);
   },
 
   initMarkup: function () {
     this.buildStatusBar();
+    this.buildControlBar();
+
+    this.main.append('<br clear="both"/>');
     this.buildBoard();
     this.buildReadout();
     this.buildEndGameOverlay();

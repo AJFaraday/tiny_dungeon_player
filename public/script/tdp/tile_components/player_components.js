@@ -108,4 +108,7 @@ TDP.tile_components.player_components = function () {
   this.heal = function (amount) {
     TDP.setHealth(TDP.health + amount);
   };
+  
+  this.restart = TDP.restart;
+  
 };

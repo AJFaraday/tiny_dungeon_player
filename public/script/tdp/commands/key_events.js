@@ -7,7 +7,8 @@ TDP.commands.keyEvents = {
     38: 'moveUp',         // up arrow
     40: 'moveDown',       // down arrow
     37: 'moveLeft',       // guess these two
-    39: 'moveRight'
+    39: 'moveRight',
+    27: 'restart'         // escape
   },
 
   init: function () {

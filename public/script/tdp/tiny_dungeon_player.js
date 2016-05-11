@@ -17,7 +17,7 @@ var TDP = {
   },
 
   restart: function() {
-    this.startFromSource(this.source);
+    TDP.startFromSource(TDP.source);
   },
 
   fieldInit: function (tweet) {

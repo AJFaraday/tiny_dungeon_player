@@ -6,9 +6,7 @@ Version 0
 
 A working game, using default input data.
 
-* State for game end
-* Restart action
-
+Finished 2016-05-11
 
 Version 0.1
 -----------
