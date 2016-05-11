@@ -32,7 +32,7 @@ QUnit.test(
 
 QUnit.test(
   'should know about its monsters',
-  function(assert) {
+  function (assert) {
     assert.ok(TDP.monsters, 'should have an array of monsters');
     assert.equal(
       TDP.monsters[0].type,
@@ -44,7 +44,7 @@ QUnit.test(
 
 QUnit.test(
   'should have links to UI elements',
-  function( assert ) {
+  function (assert) {
     assert.ok(TDP.UI.board);
     assert.ok(TDP.UI.readout);
   }
@@ -52,7 +52,7 @@ QUnit.test(
 
 QUnit.test(
   'should be able to set the score',
-  function(assert) {
+  function (assert) {
     TDP.set_score(10);
     assert.equal(
       TDP.score,
@@ -69,7 +69,7 @@ QUnit.test(
 
 QUnit.test(
   'should be able to set the turns',
-  function(assert) {
+  function (assert) {
     TDP.set_turns(5);
     assert.equal(
       TDP.turns,
@@ -98,7 +98,7 @@ QUnit.test(
 
 QUnit.test(
   'should be able to set the health',
-  function(assert) {
+  function (assert) {
     TDP.set_health(10);
     assert.equal(
       TDP.health,
@@ -122,6 +122,31 @@ QUnit.test(
       '💀',
       'it should show dead face.'
     );
+    TDP.set_health(10);
+  }
+);
+
+QUnit.test(
+  "should know when you've won",
+  function (assert) {
+    TDP.monsters = [];
+    assert.ok(TDP.finished(), "it knows the game is over");
+    assert.ok(TDP.won(), "it knows the player has won");
+    assert.notOk(TDP.lost(), "it knows the player has not lost");
+
+    TDP.fieldInit(TestData.source);
+  }
+);
+
+QUnit.test(
+  "should know when you've lost",
+  function (assert) {
+    TDP.set_health(0);
+
+    assert.ok(TDP.finished(), "it knows the game is over");
+    assert.ok(TDP.lost(), "it knows the player has lost");
+    assert.notOk(TDP.won(), "it knows the player has not won");
+
     TDP.set_health(10);
   }
 );

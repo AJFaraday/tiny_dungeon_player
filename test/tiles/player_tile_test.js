@@ -187,7 +187,6 @@ QUnit.test(
     TDP.player.specialAttack();
     major_message = "Wow! Look at that!";
     minor_message = "It engulfed all these monsters 👻, 🐘, 🐘, 👻";
-    console.log(TDP.UI.readout.html());
     assert.ok(
       TDP.UI.readout.html().indexOf(major_message) >= 0,
       'should say the Wow thing.'
