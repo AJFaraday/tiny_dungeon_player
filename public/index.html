@@ -33,12 +33,16 @@
     <script src="script/tdp/constructors/field.js"></script>
     <script src="script/tdp/constructors/tile.js"></script>
 
-    <!-- TODO a less canned source -->
-    <script src="../test/test_data.js"></script>
-
     <script type="text/javascript">
       $(document).ready(function () {
-        TDP.field.drawBoard();
+        $.get(
+          '/tweet/latest',
+          function(response) {
+            TDP.init(response.tweet);
+            TDP.field.drawBoard();
+          },
+          'json'
+        );
       });
     </script>
 
