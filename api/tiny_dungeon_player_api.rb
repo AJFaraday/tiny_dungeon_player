@@ -20,7 +20,25 @@ class TinyDungeonPlayerAPI < Sinatra::Base
 
   get '/tweet/latest' do
     tweet = @twitter_client.latest
-    {tweet: tweet.text}.to_json
+    {tweet: tweet.text, id: tweet.id, index: 1}.to_json
   end
+
+  get '/tweet/next' do
+    index = (params[:index].to_i + 1)
+    tweet = @twitter_client.fetch(index)
+    response = {tweet: tweet.text, id: tweet.id, index: index}
+    response.to_json
+  end
+
+  get '/tweet/back' do
+    index = (params[:index].to_i - 1)
+    if index >= 1
+      tweet = @twitter_client.fetch(index)
+      {tweet: tweet.text, id: tweet.id, index: index}.to_json
+    else
+      404
+    end
+  end
+
 
 end

@@ -36,6 +36,10 @@ TDP.console = {
 
   truncate_readout: function() {
     TDP.UI.readout.children().filter(":gt(5)").remove();
+  },
+
+  clear: function() {
+    TDP.UI.readout.html(' ');
   }
 
 };

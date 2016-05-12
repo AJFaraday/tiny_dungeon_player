@@ -12,6 +12,10 @@ class TwitterClient
     dungeon_timeline.take(1)[0]
   end
 
+  def fetch(index)
+    dungeon_timeline.take(index)[-1]
+  end
+
   private
 
   def dungeon_timeline

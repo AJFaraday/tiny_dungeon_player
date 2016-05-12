@@ -7,7 +7,21 @@ var TDP = {
   init: function (tweet) {
     TDP.commands.keyEvents.init();
     TDP.UI.init();
+    this.initialised = true;
     this.fieldInit(tweet);
+  },
+
+  initFromApi: function(response) {
+    if (this.initialised) {
+      TDP.fieldInit(response.tweet);
+    } else {
+      TDP.init(response.tweet);
+    }
+    delete response['tweet'];
+    TDP.data.fromAPI = response;
+    TDP.console.clear();
+    TDP.field.drawBoard();
+    TDP.end_game_panel.hide();
   },
 
   startFromSource: function (tweet) {

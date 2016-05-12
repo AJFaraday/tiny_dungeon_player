@@ -1,9 +1,9 @@
 TDP.end_game_panel = {
 
   init: function() {
-    this.initButton('back_button', function(){});
+    this.initButton('back_button', this.backFunction);
     this.initButton('restart_button', this.restartFunction);
-    this.initButton('next_button', function(){});
+    this.initButton('next_button', this.nextFunction);
   },
 
   initButton: function(id, func) {
@@ -24,6 +24,32 @@ TDP.end_game_panel = {
     TDP.UI.overlay.hide();
   },
   
+  nextFunction: function() {
+    console.log('fetching next (earlier) tweet');
+    $.get(
+      '/tweet/next',
+      TDP.data.fromAPI,
+      function(response) {
+        TDP.initFromApi(response);
+      },
+      'json'
+    )
+  },
+
+  backFunction: function() {
+    console.log('fetching previous (later) tweet');
+    $.get(
+      '/tweet/back',
+      TDP.data.fromAPI,
+      function(response) {
+        TDP.initFromApi(response);
+      },
+      'json'
+    ).fail(function(){
+      TDP.console.log("You're on the first tweet!", "Try clicking 'Next'");
+    });
+  },
+
   setTitle: function(title) {
     TDP.UI.end_game_title.html(title);
   },

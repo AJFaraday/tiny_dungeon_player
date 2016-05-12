@@ -38,8 +38,7 @@
         $.get(
           '/tweet/latest',
           function(response) {
-            TDP.init(response.tweet);
-            TDP.field.drawBoard();
+            TDP.initFromApi(response);
           },
           'json'
         );
