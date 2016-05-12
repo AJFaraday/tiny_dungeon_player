@@ -14,7 +14,7 @@ class TinyDungeonPlayerAPI < Sinatra::Base
 
   def initialize
     super
-    config = YAML.load_file('../config/api.yml')
+    config = YAML.load_file(File.dirname(__FILE__) + '/../config/api.yml')
     @twitter_client = TwitterClient.new(config)
   end
 
