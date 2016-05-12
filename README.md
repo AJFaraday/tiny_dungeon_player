@@ -17,10 +17,37 @@ It's small, it's simple, and it's still basically a proof of concept.
 Can you help? Coding (JavaScript)? testing? sound effects?
 issue logging? I'd love to hear from you.
 
+### Prerequisites
+
+* Linux
+* Ruby 2.0 +
+* Git
+* Ruby gems
+
 ### Installation
 
+Register the application with Twitter:
+
+* Go to apps.twitter.com
+* Click 'Create New App'
+* Fill in name, description and website
+* Agree to the licence agreement (if you agree)
+* 'Create your Twitter Application'
+* Save
+* Click on 'Keys and Access Tokens'
+* Copy your consumer_key and consumer_secret for now
+
+Install tiny dungeon player:
+
 * Clone the repo (https://github.com/AJFaraday/tiny_dungeon_player)
-* Open /public/index.html in FireFox
+* cd tiny_dungeon_player
+* cp config/api.yml.template api.yml
+* (edit config/api.yml and add your consumer_key and consumer_secret)
+* cd api
+* bundle install
+* cd ..
+* rackup config.ru
+* Open Firefox, and point it at localhost:9292
 
 ### Emoji Support
 
