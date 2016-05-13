@@ -1,9 +1,6 @@
 // Creature, in this case, can mean monster or pet
 TDP.tile_components.creature_health = function () {
 
-  // TODO a decision making process here
-  this.health = 2;
-
   this.isAlive = function () {
     return this.health > 0
   };

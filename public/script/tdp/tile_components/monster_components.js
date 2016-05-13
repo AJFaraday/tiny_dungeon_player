@@ -4,9 +4,12 @@ TDP.tile_components.monster_components = function () {
   TDP.tile_components.attacking.apply(this);
   TDP.tile_components.creature_health.apply(this);
 
-  // TODO some decision making here
-  this.score_value = 10;
-  
+  if (TDP.data.monster_types[this.source]) {
+    $.extend(this, TDP.data.monster_types[this.source]);
+  } else {
+    $.extend(this, TDP.data.monster_types.default);
+  }
+
   this.moveToTile = function (tile) {
     if (tile.is('floor')) {
       this.moveToPosition(tile.position());
@@ -14,6 +17,7 @@ TDP.tile_components.monster_components = function () {
   };
 
   // TODO A separate component for line-of-sight
+  // TODO have the target as an argument, not just the player
   this.canSeePlayer = function () {
     var my_position = this.position();
     var player_position = TDP.player.position();
@@ -113,9 +117,6 @@ TDP.tile_components.monster_components = function () {
     //console.log('Looking for obstacle at '+ x + ':' + y + ' - found: ' + tile.type);
     return tile.type != 'floor' && tile.type != 'player' && tile != this;
   };
-
-  this.damage = 1;
-  this.attack_chance = 2;
   
   this.attack = function(target) {
     var small_message;
@@ -141,7 +142,6 @@ TDP.tile_components.monster_components = function () {
   };
 
   this.turnAction = function () {
-    //console.log('turn action ' + this.position());
     if (this.adjacentTo(TDP.player) && TDP.player.isAlive()) {
       this.attack(TDP.player);
     } else if (this.canSeePlayer()) {

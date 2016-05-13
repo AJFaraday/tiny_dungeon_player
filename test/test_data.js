@@ -12,7 +12,7 @@ TestData = {
           "🐘🐘⬜⬜👻🏾🏾⬜⬜⬜⬛⬛⬛\n" +
           "⬜⬜⬜⬜⬜🏾⬜⬜⬜⬜🏾⬜⬜\n" +
           "⬛⬛⬛⬛⬛⬛⬜🤔⬜⬜⬛⬜⛩\n" +
-          "⬛⬛⬛⬛⬛⬛⬜⬜⬜⬜🏾⬜⬜\n",
+          "⬛⬛⬛⬛⬛⬛⬜⬜⬜⬜🏾⬜🐉\n",
 
   wall_tile: new TDP.constructors.Tile(TDP.data.named_tiles.wall),
   floor_tile: new TDP.constructors.Tile(TDP.data.named_tiles.floor),
