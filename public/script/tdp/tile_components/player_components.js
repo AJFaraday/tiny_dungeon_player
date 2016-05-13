@@ -3,13 +3,14 @@ TDP.tile_components.player_components = function () {
   TDP.tile_components.movement.apply(this);
   TDP.tile_components.attacking.apply(this);
 
-  // TODO a decision making process here 
-  this.damage = 1;             // How much damanage it'll do to monsters
-  this.attack_chance = 3;      // 1 in this many will miss the monster.
-
-  this.special_attacks = 0;    // should be found at monuments
-  this.special_attack_range = 2;
-  this.special_attack_damage = 3;
+  var attrs;
+  if (TDP.data.player_types[this.source]) {
+    attrs = TDP.data.player_types[this.source];
+  } else {
+    attrs = TDP.data.player_types.default;
+  }
+  $.extend(this, attrs);
+  TDP.health = attrs.health;
 
   this.moveToTile = function (tile) {
     if (TDP.player.isAlive()) {

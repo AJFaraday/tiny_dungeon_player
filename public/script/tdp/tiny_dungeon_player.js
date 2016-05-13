@@ -20,6 +20,7 @@ var TDP = {
     delete response['tweet'];
     TDP.data.fromAPI = response;
     TDP.console.clear();
+    TDP.console.clear();
     TDP.field.drawBoard();
     TDP.end_game_panel.hide();
   },
@@ -39,7 +40,7 @@ var TDP = {
     this.field = new TDP.constructors.Field(tweet);
     this.getPlayer();
     this.getMonsters();
-    this.setHealth(10);
+    this.setHealth(this.health);
     this.setTurns(0);
     this.setScore(0);
   },
