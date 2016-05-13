@@ -108,7 +108,8 @@ TDP.constructors.Tile = function (source) {
     var output = {
       tiles: [],
       monsters: [],
-      doors: []
+      doors: [],
+      monuments: []
     };
     var tile;
     var player = this;
@@ -129,6 +130,9 @@ TDP.constructors.Tile = function (source) {
                 }
                 if (tile.is('door')) {
                   output.doors = output.doors.concat(tile);
+                }
+                if (tile.is('monument')) {
+                  output.monuments = output.monuments.concat(tile);
                 }
               }
             }

@@ -43,14 +43,22 @@ TDP.tile_components.player_components = function () {
 
   function specialAttackDoors(entities) {
     var new_tile;
-    var new_tiles = []; // doors have been replaced with these tiles
     $.each(entities.doors, function (i, door) {
       new_tile = new TDP.constructors.Tile(TDP.data.named_tiles.floor);
       door.replaceWith(new_tile);
     });
   }
 
-  function specialAttackMonsters(entities, monster_emoji) {
+  function specialAttackMonuments(entities) {
+    var new_tile;
+    $.each(entities.monuments, function (i, monument) {
+      new_tile = new TDP.constructors.Tile(TDP.data.named_tiles.floor);
+      monument.replaceWith(new_tile);
+    });
+  }
+
+
+  function specialAttackMonsters(entities) {
     var monster_emoji = [];
     $.each(entities.monsters, function (i, monster) {
       monster.dealDamage(TDP.player.special_attack_damage);
@@ -67,7 +75,8 @@ TDP.tile_components.player_components = function () {
       this.special_attacks -= 1;
       var entities = this.monstersAndTilesInRange(this.special_attack_range);
       specialAttackDoors(entities);
-      var monster_emoji = specialAttackMonsters(entities, monster_emoji);
+      specialAttackMonuments(entities);
+      var monster_emoji = specialAttackMonsters(entities);
       specialAttackFlash(this.monstersAndTilesInRange(this.special_attack_range));
       if (monster_emoji.length == 1) {
         TDP.console.log(
