@@ -18,6 +18,10 @@ class TinyDungeonPlayerAPI < Sinatra::Base
     @twitter_client = TwitterClient.new(config)
   end
 
+  get '/' do
+    send_file File.join(settings.public_dir, 'index.html')
+  end
+
   get '/tweet/latest' do
     tweet = @twitter_client.latest
     {tweet: tweet.text, id: tweet.id, index: 1}.to_json
