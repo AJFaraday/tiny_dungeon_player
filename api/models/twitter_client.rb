@@ -8,12 +8,12 @@ class TwitterClient
     @source_account = config['source_account']
   end
 
-  def latest
-    dungeon_timeline(count: 1)[0]
+  def fetch(id)
+    @client.status(id.to_i)
   end
 
-  def fetch(index)
-    dungeon_timeline(count: index)[-1]
+  def latest
+    dungeon_timeline(count: 1)[0]
   end
 
   def after(id)

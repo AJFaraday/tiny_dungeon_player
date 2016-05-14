@@ -30,6 +30,8 @@ TDP.end_game_panel = {
       '/tweet/next',
       TDP.data.fromAPI,
       function(response) {
+        TDP.end_game_panel.setUrl(response.id);
+        console.log(response);
         TDP.initFromApi(response);
       },
       'json'
@@ -43,11 +45,17 @@ TDP.end_game_panel = {
       TDP.data.fromAPI,
       function(response) {
         TDP.initFromApi(response);
+        TDP.end_game_panel.setUrl(response.id);
       },
       'json'
     ).fail(function(){
       TDP.console.log("You're on the first tweet!", "Try clicking 'Next'");
     });
+  },
+
+  setUrl: function(id) {
+    console.log('setting url, id: ' + id);
+    window.history.pushState(id, '', ('/' + id));
   },
 
   setTitle: function(title) {

@@ -41,13 +41,7 @@
 
     <script type="text/javascript">
       $(document).ready(function () {
-        $.get(
-          '/tweet/latest',
-          function(response) {
-            TDP.initFromApi(response);
-          },
-          'json'
-        );
+        TDP.pageInit();
       });
     </script>
 

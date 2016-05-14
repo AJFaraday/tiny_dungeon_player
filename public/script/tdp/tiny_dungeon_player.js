@@ -11,7 +11,24 @@ var TDP = {
     this.fieldInit(tweet);
   },
 
-  initFromApi: function(response) {
+  pageInit: function () {
+    var url_analyis = /.*\/([0-9]+)$/.exec(window.location.href);
+    var url;
+    if (url_analyis && url_analyis[1]) {
+      url = '/tweet/' + url_analyis[1]
+    } else {
+      url = '/tweet/latest';
+    }
+    $.get(
+      url,
+      function (response) {
+        TDP.initFromApi(response);
+      },
+      'json'
+    );
+  },
+
+  initFromApi: function (response) {
     if (this.initialised) {
       TDP.fieldInit(response.tweet);
     } else {
@@ -19,7 +36,6 @@ var TDP = {
     }
     delete response['tweet'];
     TDP.data.fromAPI = response;
-    TDP.console.clear();
     TDP.console.clear();
     TDP.field.drawBoard();
     TDP.end_game_panel.hide();
@@ -31,7 +47,7 @@ var TDP = {
     this.field.drawBoard();
   },
 
-  restart: function() {
+  restart: function () {
     TDP.startFromSource(TDP.source);
   },
 
@@ -109,7 +125,7 @@ var TDP = {
     this.endIfFinished();
   },
 
-  endIfFinished: function() {
+  endIfFinished: function () {
     var panel = TDP.end_game_panel;
     if (this.won()) {
       panel.setTitle('You won!');
@@ -120,7 +136,7 @@ var TDP = {
     }
   },
 
-  changeScore: function(points) {
+  changeScore: function (points) {
     this.setScore(this.score + points);
   },
 
@@ -128,17 +144,17 @@ var TDP = {
     this.score = score;
     TDP.status_bar.setScore(score)
   },
-  
-  
-  lost: function() {
+
+
+  lost: function () {
     return TDP.player.isDead();
   },
-  
-  won: function() {
+
+  won: function () {
     return (TDP.monsters.length == 0);
   },
-  
-  finished: function() {
+
+  finished: function () {
     return (this.lost() || this.won());
   }
 
