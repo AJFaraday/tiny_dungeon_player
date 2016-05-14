@@ -23,9 +23,10 @@ TDP.UI = {
     $.each(
       TDP.data.buttons,
       function (i, button_data) {
-        button = $('<span>');
+        button = $('<div>');
         button.addClass('TDP_control_bar_button');
-        button.html(button_data.icon);
+        console.log(TDP.emoji.get(button_data.icon));
+        button.html(TDP.emoji.get(button_data.icon));
         button.attr('title', button_data.tooltip);
         button.on('click', function(e){
           TDP.player[button_data.action]();

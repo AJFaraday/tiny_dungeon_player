@@ -48,7 +48,10 @@ div#TDP_control_bar {
   margin-bottom:2px;
 }
 
-span.TDP_control_bar_button {
+div.TDP_control_bar_button {
+  padding: 1px;
+  width: 32px;
+  height: 32px;
   font-size: 30px;
   float: left;
   top: 2px;
@@ -75,8 +78,9 @@ div.TDP_board_row {
 }
 
 div.TDP_board_tile {
-  width: 42px;
-  height: 42px;
+  padding: 1px;
+  width: 40px;
+  height: 40px;
   font-size: 40px;
   float: left;
   position: relative;
@@ -94,14 +98,13 @@ div.TDP_board_tile {
 }
 
 div.TDP_board_tile_overlay {
-  width: 42px;
-  height: 42px;
+  padding: 1px;
+  width: 40px;
+  height: 40px;
   font-size: 40px;
   position:absolute;
   top: 0;
   left: 0;
-  //background-color: black; // TODO remove this
-
 }
 
 /*///////////////////

@@ -93,7 +93,7 @@ TDP.constructors.Field = function (source) {
   this.drawTile = function (tile) {
     var html_tile = $('<div>');
     html_tile.addClass('TDP_board_tile');
-    html_tile.html(tile.source);
+    html_tile.html(TDP.emoji.get(tile.source));
 
     var overlay = $('<div/>');
     overlay.addClass('TDP_board_tile_overlay');

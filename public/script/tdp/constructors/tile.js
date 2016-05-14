@@ -162,7 +162,7 @@ TDP.constructors.Tile = function (source) {
       try {
         var tile = me.html_tile();
         var overlay = tile.children('.TDP_board_tile_overlay');
-        overlay.html(character);
+        overlay.html(TDP.emoji.get(character));
         overlay.removeClass('flashing');
         overlay.addClass('flashing');
       } catch (er) {
