@@ -1,0 +1,76 @@
+<DOCTYPE !html/>
+<head>
+  <script src="script/jquery-2.2.3.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+ 
+  <script src='/vertical_swipe.js'></script>
+   
+  <script type='text/javascript'>
+    $(document).ready(function() {
+      $.mobile.loading().hide();
+      var data = {};
+
+      function log(content) {
+        $('#readout').append(content);  
+        $('#readout').append('<br clear="both"/>');
+      };
+
+      // seems we can decide if it's a touch screen or not 
+      var supportTouch = $.support.touch;
+
+      $('#target').on(
+        'swiperight',
+        function(e) {
+          e.preventDefault();
+          log('swiped right');
+        }
+      );
+
+      $('#target').on(
+        'swipeleft',
+        function(e) {
+          e.preventDefault();
+          log('swiped left');
+        }
+      );
+
+      $('#target').on(
+        'swipeup',
+        function(e) {
+          e.preventDefault();
+          log('swiped up');
+        }
+      );
+
+      $('#target').on(
+        'swipedown',
+        function(e) {
+          e.preventDefault();
+          log('swiped down');
+        }
+      );
+
+    /* disables scrolling, but also swipeleft and swiperight
+    $('#target').on('touchmove', function(e) {
+        e.preventDefault();
+    });
+    */
+
+      $(documemt).bind('scroll', function() {
+        // "Disable" the horizontal scroll.
+        if ($body.scrollLeft() !== 0) {
+          $body.scrollLeft(0);
+        }
+      });
+
+    });
+  </script>
+</head>
+
+<body>
+  <div style='width: 360px;height:400px;border: black solid 1px;' id='target'/>
+  <div id='readout'/>
+</body>
+
