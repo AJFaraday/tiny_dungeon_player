@@ -169,7 +169,7 @@ QUnit.test(
     TDP.UI.readout.html('');
     TDP.player.specialAttack();
     major_message = "Wow! Look at that!";
-    minor_message = "It engulfed the 👻";
+    minor_message = TDP.emoji.get("It engulfed the 👻");
     assert.ok(
       TDP.UI.readout.html().indexOf(major_message) >= 0,
       'should say the Wow thing.'
@@ -186,7 +186,7 @@ QUnit.test(
     TDP.UI.readout.html('');
     TDP.player.specialAttack();
     major_message = "Wow! Look at that!";
-    minor_message = "It engulfed all these monsters 👻, 🐘, 🐘, 👻";
+    minor_message = TDP.emoji.get("It engulfed all these monsters 👻, 🐘, 🐘, 👻");
     assert.ok(
       TDP.UI.readout.html().indexOf(major_message) >= 0,
       'should say the Wow thing.'
