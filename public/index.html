@@ -4,12 +4,13 @@
     <title>Tiny Dungeon Player</title>
     <meta charset="UTF-8">
 
-    <script src="script/analytics.js"></script>
+    <script src="script/ext/analytics.js"></script>
     <script src="https://twemoji.maxcdn.com/2/twemoji.min.js"></script>
 
     <link rel="stylesheet" href="style/tdp.css">
 
-    <script src="script/jquery-2.2.3.min.js"></script>
+    <script src="script/ext/jquery-2.2.3.min.js"></script>
+    <script src="script/ext/jquery.mobile-1.4.5.min.js"></script>
 
     <!-- TODO package all this together -->
     <script src="script/tdp/tiny_dungeon_player.js"></script>
@@ -43,7 +44,7 @@
       $(document).ready(function () {
         $.get(
           '/tweet/latest',
-          function(response) {
+          function (response) {
             TDP.initFromApi(response);
           },
           'json'
