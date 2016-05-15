@@ -51,8 +51,8 @@ QUnit.test(
       'should have given the player a special attack'
     );
 
-    var major_message = "Hey look! It's a " + monument_tile.source;
-    var minor_message = 'You found a special attack!';
+    var major_message = TDP.emoji.get("Hey look! It's a " + monument_tile.source);
+    var minor_message = TDP.emoji.get('You found a special attack!');
     assert.ok(
       TDP.UI.readout.html().indexOf(major_message) >= 0,
       'should say the Hey Look thing.'
@@ -70,8 +70,8 @@ QUnit.test(
       'should have given the player a special attack'
     );
 
-    major_message = "Yaaaaawn, that " + monument_tile.source + ' again.';
-    minor_message = "You've already searched this " + monument_tile.source;
+    major_message = TDP.emoji.get("Yaaaaawn, that " + monument_tile.source + ' again.');
+    minor_message = TDP.emoji.get("You've already searched this " + monument_tile.source);
     assert.ok(
       TDP.UI.readout.html().indexOf(major_message) >= 0,
       'should say the Yaaawn thing.'
@@ -91,8 +91,8 @@ QUnit.test(
       'should have given the player another special attack'
     );
 
-    var major_message = "Hey look! It's a " + monument_tile.source;
-    var minor_message = "You found another special attack! Now you've got 2";
+    var major_message = TDP.emoji.get("Hey look! It's a " + monument_tile.source);
+    var minor_message = TDP.emoji.get("You found another special attack! Now you've got 2");
     assert.ok(
       TDP.UI.readout.html().indexOf(major_message) >= 0,
       'should say the Hey Look thing.'

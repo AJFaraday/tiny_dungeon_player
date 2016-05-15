@@ -49,15 +49,15 @@ QUnit.test(
       'should have increased the score'
     );
 
-    var major_message = "You picked up the " + item.source;
-    var minor_message = "You scored " + item.score_value + " points.";
+    var major_message = TDP.emoji.get("You picked up the " + item.source);
+    var minor_message = TDP.emoji.get("You scored " + item.score_value + " points.");
     assert.ok(
       TDP.UI.readout.html().indexOf(major_message) >= 0,
-      'should say the Wow thing.'
+      'should say the picked up thing.'
     );
     assert.ok(
       TDP.UI.readout.html().indexOf(minor_message) >= 0,
-      'should tell you about the miss.'
+      'should tell you about the points.'
     );
 
     TDP.fieldInit(TestData.source);

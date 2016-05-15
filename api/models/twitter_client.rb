@@ -8,18 +8,30 @@ class TwitterClient
     @source_account = config['source_account']
   end
 
-  def latest
-    dungeon_timeline.take(1)[0]
+  def fetch(id)
+    @client.status(id.to_i)
   end
 
-  def fetch(index)
-    dungeon_timeline.take(index)[-1]
+  def latest
+    dungeon_timeline(count: 1)[0]
+  end
+
+  def after(id)
+    dungeon_timeline(max_id: id, count: 2)[-1]
+  end
+
+  def before(id)
+    dungeon_timeline(since: id, count: 1)[0]
   end
 
   private
 
-  def dungeon_timeline
-    @client.user_timeline(@source_account)
+  def dungeon_timeline(options)
+    options = {
+      trim_user: true,
+      exclude_replies: true
+    }.merge!(options)
+    @client.user_timeline(@source_account, options)
   end
 
 end

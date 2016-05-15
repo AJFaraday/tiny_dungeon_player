@@ -1,13 +1,13 @@
 TDP.data.overlays = {
 
-  special_attack: "\u{1F525}",  // 🔥
-  player_attack: "\u{1F4A5}",   // 💥
-  player_miss: "\u{1F4AB}",     // 💫
-  player_kill: "\u{2620}",      // ☠
-  monster_attack: "\u{1F4A2}",  // 💢
-  monster_miss: "\u{1F4AB}",    // 💫
-  monster_kill: "\u{2620}",     // ☠
-  monument_find: "\u{2728}"     // ✨
+  special_attack: "\uD83D\uDD25",  // 🔥
+  player_attack: "\uD83D\uDCA5",   // 💥
+  player_miss: "\uD83D\uDCAB",     // 💫
+  player_kill: "\u2620",      // ☠
+  monster_attack: "\uD83D\uDCA2",  // 💢
+  monster_miss: "\uD83D\uDCAB",    // 💫
+  monster_kill: "\u2620",     // ☠
+  monument_find: "\u2728"     // ✨
 
 };
 

@@ -120,7 +120,7 @@ QUnit.test(
 
 
 QUnit.test(
-  'should attack a monster (hitting it)',
+  'should attack the player (hitting it)',
   function (assert) {
     var player_tile = TDP.field.tileAt(7, 8);
     var monster_tile = TDP.field.tileAt(2, 5);
@@ -139,7 +139,7 @@ QUnit.test(
       starting_health - player_tile.damage
     );
     assert.ok(
-      (TDP.UI.readout.html().indexOf('Attacking ' + monster_tile.source + '!') > 1),
+      (TDP.UI.readout.html().indexOf(TDP.emoji.get('Attacking ' + monster_tile.source + '!')) > 1),
       "should show that you're attacking in the readout"
     );
     assert.ok(
@@ -154,7 +154,7 @@ QUnit.test(
 );
 
 QUnit.test(
-  'should attack a monster (killing it)',
+  'should attack the player (killing it)',
   function (assert) {
     var player_tile = TDP.field.tileAt(7, 8);
     var monster_tile = TDP.field.tileAt(2, 5);
@@ -175,7 +175,7 @@ QUnit.test(
     );
     assert.ok(monster_tile.isDead(), 'it should have died.');
     assert.ok(
-      (TDP.UI.readout.html().indexOf('Attacking ' + monster_tile.source + '!') > 1),
+      (TDP.UI.readout.html().indexOf(TDP.emoji.get('Attacking ' + monster_tile.source + '!')) > 1),
       "should show that you're attacking in the readout"
     );
     assert.ok(
@@ -193,7 +193,7 @@ QUnit.test(
 
 
 QUnit.test(
-  'should attack a monster (missing it)',
+  'should attack the player (missing it)',
   function (assert) {
     var player_tile = TDP.field.tileAt(7, 8);
     var monster_tile = TDP.field.tileAt(2, 5);
@@ -213,7 +213,7 @@ QUnit.test(
       starting_health
     );
     assert.ok(
-      (TDP.UI.readout.html().indexOf('Attacking ' + monster_tile.source + '!') > 1),
+      (TDP.UI.readout.html().indexOf(TDP.emoji.get('Attacking ' + monster_tile.source + '!')) > 1),
       "should show that you're attacking in the readout"
     );
     assert.ok(
@@ -354,7 +354,7 @@ QUnit.test(
     );
 
     assert.ok(
-      (TDP.UI.readout.html().indexOf('🐘 attacked you!') >= 0),
+      (TDP.UI.readout.html().indexOf(TDP.emoji.get('🐘 attacked you!')) >= 0),
       'should say it attacked you in the readout.'
     );
 
@@ -380,7 +380,7 @@ QUnit.test(
 
     TDP.newTurn();
     assert.ok(
-      (TDP.UI.readout.html().indexOf('🐘 attacked you!') >= 0),
+      (TDP.UI.readout.html().indexOf(TDP.emoji.get('🐘 attacked you!')) >= 0),
       'should say it attacked you in the readout.'
     );
 
@@ -404,7 +404,7 @@ QUnit.test(
 
     TDP.newTurn();
     assert.ok(
-      (TDP.UI.readout.html().indexOf('🐘 attacked you!') >= 0),
+      (TDP.UI.readout.html().indexOf(TDP.emoji.get('🐘 attacked you!')) >= 0),
       'should say it attacked you in the readout.'
     );
 
