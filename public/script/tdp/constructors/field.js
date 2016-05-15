@@ -67,6 +67,7 @@ TDP.constructors.Field = function (source) {
   this.drawBoard = function () {
     var content = $('<div>');
     content.addClass('TDP_board_inner');
+    content.on('selectstart', false);
     $.each(
       this.rows,
       function (i, row) {
