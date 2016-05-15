@@ -14,17 +14,21 @@ TDP.commands.touchScreenEvents = {
       $.each(
         Object.keys(this.event_mappings),
         function(i, event_name) {
-          action = this.event_mappings[event_name];
-          TDP.UI.board.off(event_name);
-          TDP.UI.board.on(
+          action = TDP.commands.touchScreenEvents.event_mappings[event_name];
+          $(document).off(
             event_name,
+            '#TDP_board'
+          );
+          $(document).on(
+            event_name,
+            '#TDP_board',
             function(e){
               e.preventDefault();
               TDP.player[action]();
             }
           )
         }
-      )
+      );
     }
   },
 
