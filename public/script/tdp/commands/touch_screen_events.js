@@ -8,31 +8,28 @@ TDP.commands.touchScreenEvents = {
     'tap': 'specialAttack'
   },
 
-  init: function() {
-    var action;
+  init: function () {
     if (this.onMobile()) {
       $.each(
         Object.keys(this.event_mappings),
-        function(i, event_name) {
-          action = TDP.commands.touchScreenEvents.event_mappings[event_name];
-          $(document).off(
-            event_name,
-            '#TDP_board'
-          );
+        function (i, event_name) {
+          var action_name = TDP.commands.touchScreenEvents.event_mappings[event_name];
+          console.log(event_name);
+          console.log(action_name);
           $(document).on(
             event_name,
-            '#TDP_board',
-            function(e){
+            'div#TDP_board',
+            function (e) {
               e.preventDefault();
-              TDP.player[action]();
+              TDP.player[action_name]();
             }
-          )
+          );
         }
       );
     }
   },
 
-  onMobile: function() {
+  onMobile: function () {
     return $.support.touch;
   }
 
