@@ -6,6 +6,7 @@ var TDP = {
 
   init: function (tweet) {
     TDP.commands.keyEvents.init();
+    TDP.commands.touchScreenEvents.init();
     TDP.UI.init();
     this.initialised = true;
     this.fieldInit(tweet);
