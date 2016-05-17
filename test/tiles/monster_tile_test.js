@@ -118,6 +118,53 @@ QUnit.test(
   }
 );
 
+QUnit.test(
+  'it should know if it can see the player or not',
+  function (assert) {
+    TDP.fieldInit(TestData.seeing_scenario);
+    var monster_tile = TDP.field.tileAt(0, 0);
+    assert.equal(
+      monster_tile.follow_range,
+      6,
+      'it hould have the default follow range'
+    );
+    /*
+     🐘⬜⬜
+     ⬜⬜⬜
+     ⬜⬜🤔
+    */
+    monster_tile.follow_range = 1;
+    assert.notOk(
+      monster_tile.canSeePlayer(),
+      'should not see the player over its range (1)'
+    );
+    monster_tile.follow_range = 2;
+    assert.notOk(
+      monster_tile.canSeePlayer(),
+      'should not see the player over its range (2)'
+    );
+    monster_tile.follow_range = 3;
+    assert.notOk(
+      monster_tile.canSeePlayer(),
+      'should not see the player over its range (3)'
+    );
+    monster_tile.follow_range = 4;
+    assert.ok(
+      monster_tile.canSeePlayer(),
+      'should be able to see the player'
+    );
+    monster_tile.follow_range = 5;
+    assert.ok(
+      monster_tile.canSeePlayer(),
+      'should be able to see the player'
+    );
+
+
+    monster_tile.follow_range = 6;
+    TDP.fieldInit(TestData.source);
+  }
+);
+
 
 QUnit.test(
   'should attack the player (hitting it)',

@@ -3,7 +3,8 @@ TDP.data.monster_types = {
     attack_chance: 2,
     health: 2,
     damage: 1,
-    score_value: 10
+    score_value: 10,
+    follow_range: 4 
   }
 };
 

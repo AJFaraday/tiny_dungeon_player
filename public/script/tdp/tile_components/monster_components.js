@@ -38,24 +38,29 @@ TDP.tile_components.monster_components = function () {
   this.lookForObstaclesXFirst = function (my_position, player_position) {
     var x = my_position[0];
     var y = my_position[1];
+    var spaces_looked = 0;
     var obstacle_found = false;
     while ((x != player_position[0] || y != player_position[1]) && !obstacle_found) {
       if (player_position[0] > x) {
         x += 1;
+        spaces_looked += 1;
       } else if (player_position[0] < x) {
         x -= 1;
+        spaces_looked += 1;
       }
-      obstacle_found = this.obstacleAt(x, y);
-      if (obstacle_found) {
+      obstacle_found = (this.obstacleAt(x, y) || spaces_looked > this.follow_range);
+      if (obstacle_found || spaces_looked > this.follow_range) {
         break;
       }
 
       if (player_position[1] > y) {
         y += 1;
+        spaces_looked += 1;
       } else if (player_position[1] < y) {
         y -= 1;
+        spaces_looked += 1;
       }
-      obstacle_found = this.obstacleAt(x, y);
+      obstacle_found = (this.obstacleAt(x, y) || spaces_looked > this.follow_range);
       if (obstacle_found) {
         break;
       }
@@ -75,6 +80,7 @@ TDP.tile_components.monster_components = function () {
   this.lookForObstaclesYFirst = function (my_position, player_position) {
     var x = my_position[0];
     var y = my_position[1];
+    var spaces_looked = 0;
     var obstacle_found = false;
     while (
     (x != player_position[0] || y != player_position[1]) && !obstacle_found
@@ -82,21 +88,25 @@ TDP.tile_components.monster_components = function () {
 
       if (player_position[1] > y) {
         y += 1;
+        spaces_looked += 1;
       } else if (player_position[1] < y) {
         y -= 1;
+        spaces_looked += 1;
       }
-      obstacle_found = this.obstacleAt(x, y);
-      if (obstacle_found) {
+      obstacle_found = (this.obstacleAt(x, y) || spaces_looked > this.follow_range);
+      if (obstacle_found || spaces_looked > this.follow_range) {
         break;
       }
 
       if (player_position[0] > x) {
         x += 1;
+        spaces_looked += 1;
       } else if (player_position[0] < x) {
         x -= 1;
+        spaces_looked += 1;
       }
-      obstacle_found = this.obstacleAt(x, y);
-      if (obstacle_found) {
+      obstacle_found = (this.obstacleAt(x, y) || spaces_looked > this.follow_range);
+      if (obstacle_found || spaces_looked > this.follow_range) {
         break;
       }
 
@@ -114,13 +124,12 @@ TDP.tile_components.monster_components = function () {
 
   this.obstacleAt = function (x, y) {
     var tile = TDP.field.tileAt(x, y);
-    //console.log('Looking for obstacle at '+ x + ':' + y + ' - found: ' + tile.type);
     return tile.type != 'floor' && tile.type != 'player' && tile != this;
   };
-  
-  this.attack = function(target) {
+
+  this.attack = function (target) {
     var small_message;
-    if(this.willHit()) {
+    if (this.willHit()) {
       TDP.player.dealDamage(this.damage);
       small_message = 'It did ' + this.damage + ' damage!';
       if (TDP.player.isDead()) {
