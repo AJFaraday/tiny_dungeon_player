@@ -5,7 +5,7 @@ QUnit.test(
   function (assert) {
     assert.equal(TestData.player_tile.type, 'player', 'tile type should be player');
     assert.ok(TestData.player_tile.is('player'), 'is function should return true');
-    assert.notOk(TestData.player_tile.is('door'), 'is function should return false (when type is wrong)');
+    assert.notOk(TestData.player_tile.is('passage'), 'is function should return false (when type is wrong)');
   }
 );
 

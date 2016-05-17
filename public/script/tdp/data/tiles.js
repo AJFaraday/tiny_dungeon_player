@@ -3,9 +3,8 @@ TDP.data.named_tiles = {
   // scenery
   wall: "\u2b1b",
   floor: "\u2b1c",
-  door: "\uD83D\uDEAA",
-  // sometimes converted by twitter UI
-  door2: "\uD83C\uDFFE",
+  // not a door
+  passage: "\uD83C\uDFFE",
   // food
   beer: "\uD83C\uDF7A",
   cheese: "\uD83E\uDDC0",
@@ -190,6 +189,11 @@ TDP.data.tiles = {
     named_tiles.cat,
     named_tiles.dog,
     named_tiles.horse
+  ],
+
+  floors: [
+    named_tiles.floor,
+    named_tiles.passage
   ]
 
 
@@ -205,9 +209,6 @@ TDP.data.tiles.impassable = TDP.data.tiles.impassable.concat(TDP.data.tiles.pets
 TDP.data.tiles.classifications = {};
 
 TDP.data.tiles.classifications[TDP.data.named_tiles.wall] = 'wall';
-TDP.data.tiles.classifications[TDP.data.named_tiles.floor] = 'floor';
-TDP.data.tiles.classifications[TDP.data.named_tiles.door] = 'door';
-TDP.data.tiles.classifications[TDP.data.named_tiles.door2] = 'door';
 
 var build_classification = function (collection, name) {
   jQuery.each(
@@ -219,7 +220,8 @@ var build_classification = function (collection, name) {
 };
 
 build_classification(TDP.data.tiles.players, 'player');
-build_classification(TDP.data.tiles.pet, 'pet');
+build_classification(TDP.data.tiles.pets, 'pet');
+build_classification(TDP.data.tiles.floors, 'floor');
 build_classification(TDP.data.tiles.items, 'item');
 build_classification(TDP.data.tiles.food, 'food');
 build_classification(TDP.data.tiles.monuments, 'monument');

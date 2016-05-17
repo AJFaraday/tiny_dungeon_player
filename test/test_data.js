@@ -16,7 +16,7 @@ TestData = {
 
   wall_tile: new TDP.constructors.Tile(TDP.data.named_tiles.wall),
   floor_tile: new TDP.constructors.Tile(TDP.data.named_tiles.floor),
-  door_tile: new TDP.constructors.Tile(TDP.data.named_tiles.door),
+  passage_tile: new TDP.constructors.Tile(TDP.data.named_tiles.passage),
   player_tile:new TDP.constructors.Tile(TDP.data.named_tiles.worried),
   food_tile:new TDP.constructors.Tile(TDP.data.named_tiles.cheese),
   item_tile:new TDP.constructors.Tile(TDP.data.named_tiles.book),

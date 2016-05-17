@@ -55,7 +55,7 @@ TDP.commands.tile_interactions = {
           'You found a special attack!'
         );
       } else {
-        monument.flash(TDP.data.overlays.monument_find);  
+        monument.flash(TDP.data.overlays.monument_find);
         TDP.console.log(
           "Hey look! It's a " + monument.source,
           "You found another special attack! Now you've got " + player.special_attacks
@@ -67,11 +67,6 @@ TDP.commands.tile_interactions = {
         "You've already searched this " + monument.source
       );
     }
-  },
-
-  door: function(door, player) {
-    TDP.console.log("Opening the door", '');
-    player.moveToPosition(door.position());
   },
   
   item: function(item, player) {

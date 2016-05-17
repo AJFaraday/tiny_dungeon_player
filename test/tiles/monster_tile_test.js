@@ -125,7 +125,7 @@ QUnit.test(
     var monster_tile = TDP.field.tileAt(0, 0);
     assert.equal(
       monster_tile.follow_range,
-      6,
+      4,
       'it hould have the default follow range'
     );
     /*
@@ -160,7 +160,7 @@ QUnit.test(
     );
 
 
-    monster_tile.follow_range = 6;
+    monster_tile.follow_range = 4;
     TDP.fieldInit(TestData.source);
   }
 );

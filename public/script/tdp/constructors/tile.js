@@ -3,6 +3,7 @@ TDP.constructors.Tile = function (source) {
 
   this.class = 'Tile';
   this.source = source;
+  this.startEmoji = source;
 
   this.impassable = TDP.utils.contains(
     TDP.data.tiles.impassable,
@@ -35,7 +36,7 @@ TDP.constructors.Tile = function (source) {
   };
 
   this.hasInteraction = TDP.utils.contains(
-    ['item', 'food', 'door', 'monument', 'monster'],
+    ['item', 'food', 'monument', 'monster'],
     this.type
   );
 
@@ -103,12 +104,11 @@ TDP.constructors.Tile = function (source) {
   // steps. Returns:
   //
   // monsters: monster type tiles in range
-  // tiles: all tiles but walls, doors and monuments in range
+  // tiles: all tiles but walls and monuments in range
   this.monstersAndTilesInRange = function (range) {
     var output = {
       tiles: [],
       monsters: [],
-      doors: [],
       monuments: []
     };
     var tile;
@@ -128,9 +128,6 @@ TDP.constructors.Tile = function (source) {
                 if (tile.is('monster')) {
                   output.monsters = output.monsters.concat(tile);
                 }
-                if (tile.is('door')) {
-                  output.doors = output.doors.concat(tile);
-                }
                 if (tile.is('monument')) {
                   output.monuments = output.monuments.concat(tile);
                 }
@@ -144,7 +141,7 @@ TDP.constructors.Tile = function (source) {
   };
 
 
-  this.startEmoji = this.source;
+
 
   this.resetEmoji = function () {
     this.source = this.startEmoji;

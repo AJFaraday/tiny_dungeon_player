@@ -4,9 +4,9 @@ QUnit.test(
   'should hold on to its source emoji',
   function (assert) {
     assert.equal(
-      door_tile.source,
-      TDP.data.named_tiles.door,
-      ('wall tile source should be ' + TDP.data.named_tiles.wall)
+      TestData.passage_tile.source,
+      TDP.data.named_tiles.passage,
+      ('passage tile source should be ' + TDP.data.named_tiles.passage)
     );
   }
 );

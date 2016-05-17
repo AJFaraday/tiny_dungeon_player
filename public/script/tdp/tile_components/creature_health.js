@@ -12,7 +12,7 @@ TDP.tile_components.creature_health = function () {
   this.dealDamage = function (amount) {
     this.health -= amount;
     if (this.isDead()) {
-      this.replaceWith(new TDP.constructors.Tile(TDP.data.named_tiles.floor));
+      this.replaceWith(this.last_tile);
       TDP.monsters.splice(TDP.monsters.indexOf(this), 1);
       TDP.field.drawBoard();
     }

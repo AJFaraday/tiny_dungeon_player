@@ -5,6 +5,7 @@ var TDP = {
   tile_components: {},
 
   init: function (tweet) {
+    $('.ui-loader-default').remove();
     TDP.commands.keyEvents.init();
     TDP.commands.touchScreenEvents.init();
     TDP.UI.init();

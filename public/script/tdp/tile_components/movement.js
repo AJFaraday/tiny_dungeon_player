@@ -10,18 +10,26 @@ TDP.tile_components.movement = function () {
     this.moveTo(position[0], position[1]);
   };
 
+  this.last_tile = new TDP.constructors.Tile(TDP.data.named_tiles.floor);
+
   this.moveTo = function (x, y) {
     var start_position = this.position();
+
+    var tile_to_replace = TDP.field.tileAt(x, y);
 
     TDP.field.replaceTile(this, x, y);
 
     TDP.field.replaceTile(
-      new TDP.constructors.Tile(
-        TDP.data.named_tiles.floor
-      ),
+      this.last_tile,
       start_position[0],
       start_position[1]
     );
+
+    if (tile_to_replace.is('floor')) {
+      this.last_tile = tile_to_replace;
+    } else {
+      this.last_tile = new TDP.constructors.Tile(TDP.data.named_tiles.floor);
+    }
   };
 
   this.moveUp = function () {
@@ -45,14 +53,14 @@ TDP.tile_components.movement = function () {
   ///////////////////////////////
   this.XFirst = (Math.floor(Math.random() * 2) == 0);
 
-  this.moveTowardsTile = function(tile) {
+  this.moveTowardsTile = function (tile) {
     this.moveTowardsPosition(tile.position());
   };
 
-  this.moveTowardsPosition = function(position) {
+  this.moveTowardsPosition = function (position) {
     this.moveTowards(position[0], position[1]);
   };
-  
+
   this.moveTowards = function (x, y) {
     var moved;
     if (this.XFirst) {
@@ -64,7 +72,7 @@ TDP.tile_components.movement = function () {
       moved = this.moveTowardsY(y);
       if (!moved) {
         this.moveTowardsX(x);
-      }      
+      }
     }
     this.toggleXFirst();
   };

@@ -42,14 +42,6 @@ TDP.tile_components.player_components = function () {
     });
   }
 
-  function specialAttackDoors(entities) {
-    var new_tile;
-    $.each(entities.doors, function (i, door) {
-      new_tile = new TDP.constructors.Tile(TDP.data.named_tiles.floor);
-      door.replaceWith(new_tile);
-    });
-  }
-
   function specialAttackMonuments(entities) {
     var new_tile;
     $.each(entities.monuments, function (i, monument) {
@@ -75,7 +67,6 @@ TDP.tile_components.player_components = function () {
     } else {
       this.special_attacks -= 1;
       var entities = this.monstersAndTilesInRange(this.special_attack_range);
-      specialAttackDoors(entities);
       specialAttackMonuments(entities);
       var monster_emoji = specialAttackMonsters(entities);
       specialAttackFlash(this.monstersAndTilesInRange(this.special_attack_range));

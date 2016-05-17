@@ -66,17 +66,15 @@ QUnit.test(
 );
 
 QUnit.test(
-  'should be able to retrieve door at 4, 4',
+  'should be able to retrieve passage at 4, 4',
   function (assert) {
     var space = field.tileAt(4, 4);
-    assert.equal(space.type, 'door', 'tile should be a door');
-    assert.ok(space.is('door'), 'tile should be a door');
+    assert.equal(space.type, 'floor', 'tile should be a floor');
+    assert.ok(space.is('floor'), 'tile should be a floor');
 
     assert.ok(space, 'there should be a tile at 4, 4');
     assert.ok(space.passable, 'tile at 4, 4 should be passable');
     assert.notOk(space.impassable, 'tile at 4, 4 should not be impassable');
-
-    assert.ok(space.hasInteraction, 'tile at 4, 4 should have an interaction');
   }
 );
 
