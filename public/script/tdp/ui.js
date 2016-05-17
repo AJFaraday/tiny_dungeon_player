@@ -25,6 +25,9 @@ TDP.UI = {
       function (i, button_data) {
         button = $('<div>');
         button.addClass('TDP_control_bar_button');
+        button.attr('unselectable', 'on');
+        button.css('user-select', 'none');
+        button.on('selectstart', false);
         button.html(TDP.emoji.get(button_data.icon));
         button.attr('title', button_data.tooltip);
         button.on('click', function(e){

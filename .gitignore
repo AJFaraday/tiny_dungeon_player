@@ -1,4 +1,2 @@
 .idea
-# a proof of concept that includes an app secret
-twitter_try.rb
 config/api.yml 
