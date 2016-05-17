@@ -49,11 +49,13 @@ TDP.commands.tile_interactions = {
       player.special_attacks += 1;
       monument.found = true;
       if (player.special_attacks == 1) {
+        monument.flash(TDP.data.overlays.monument_find);
         TDP.console.log(
           "Hey look! It's a " + monument.source,
           'You found a special attack!'
         );
       } else {
+        monument.flash(TDP.data.overlays.monument_find);  
         TDP.console.log(
           "Hey look! It's a " + monument.source,
           "You found another special attack! Now you've got " + player.special_attacks
