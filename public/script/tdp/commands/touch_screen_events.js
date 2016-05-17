@@ -18,7 +18,7 @@ TDP.commands.touchScreenEvents = {
           console.log(action_name);
           $(document).on(
             event_name,
-            'div#TDP_board',
+            'body',
             function (e) {
               e.preventDefault();
               TDP.player[action_name]();
