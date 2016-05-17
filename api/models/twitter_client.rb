@@ -9,22 +9,56 @@ class TwitterClient
   end
 
   def fetch(id)
-    @client.status(id.to_i)
+    tweet = @client.status(id.to_i)
+    return tweet if tweet_is_dungeon?(tweet)
+    next_dungeon(tweet.id)
   end
 
   def latest
-    dungeon_timeline(count: 1)[0]
+    tweet = dungeon_timeline(count: 1)[0]
+    return tweet if tweet_is_dungeon?(tweet)
+    next_dungeon(tweet.id)
   end
 
   def after(id)
-    dungeon_timeline(max_id: id, count: 2)[-1]
+    tweet = dungeon_timeline(max_id: id.to_i - 1, count: 1)[0]
+    return tweet if tweet_is_dungeon?(tweet)
+    next_dungeon(tweet.id)
   end
 
   def before(id)
-    dungeon_timeline(since: id, count: 1)[0]
+    tweet = dungeon_timeline(since_id: id, count: 200)[-1]
+    if tweet
+      return tweet if tweet_is_dungeon?(tweet)
+      prev_dungeon(tweet.id)
+    else
+      return nil
+    end
   end
 
   private
+
+  # Looks for a tweet that is a dungeon
+  # earlier than the id given
+  def next_dungeon(id)
+    puts 'looking for next dungeon'
+    tweets = dungeon_timeline(max_id: id, count: 20)
+    tweets.each do |tweet|
+      return tweet if tweet_is_dungeon?(tweet)
+    end
+  end
+
+  def prev_dungeon(id)
+    puts 'looking for previous dungeon'
+    tweets = dungeon_timeline(since_id: id, count: 200)
+    tweets.reverse.each do |tweet|
+      return tweet if tweet_is_dungeon?(tweet)
+    end
+  end
+
+  def tweet_is_dungeon?(tweet)
+    !(tweet.text =~ /[a-zA-Z0-9 ]/)
+  end
 
   def dungeon_timeline(options)
     options = {
