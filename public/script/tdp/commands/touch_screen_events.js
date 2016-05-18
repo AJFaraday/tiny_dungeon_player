@@ -4,8 +4,8 @@ TDP.commands.touchScreenEvents = {
     'swiperight': 'moveRight',
     'swipeleft': 'moveLeft',
     'swipedown': 'moveDown',
-    'swipeup': 'moveUp',
-    'taphold': 'specialAttack'
+    'swipeup': 'moveUp'//,
+    //'taphold': 'specialAttack'
   },
 
   init: function () {
@@ -20,12 +20,29 @@ TDP.commands.touchScreenEvents = {
             function (e) {
               e.preventDefault();
               TDP.player[action_name]();
+              TDP.commands.touchScreenEvents.suppressSpecial=true;
+              setTimeout(
+                function(){
+                  TDP.commands.touchScreenEvents.suppressSpecial=false;
+                },
+                1000
+              )
             }
           );
-
         }
       );
-      $.event.special.tap.tapholdThreshold = 2000;
+      $(document).on(
+        'taphold',
+        '.TDP_board_inner, #TDP_readout',
+        function (e) {
+          e.preventDefault();
+          if (!TDP.commands.touchScreenEvents.suppressSpecial) {
+            TDP.player.specialAttack();
+          }
+        }
+      );
+
+      $.event.special.tap.tapholdThreshold = 1000;
     }
   },
 
