@@ -8,6 +8,14 @@ TDP.commands.touchScreenEvents = {
     //'taphold': 'specialAttack'
   },
 
+  init: function () {
+    if (this.onMobile()) {
+      this.initNamedActions();
+      this.initSpecialAttack();
+      this.configureMobileEvents();
+    }
+  },
+
   initSpecialAttack: function () {
     $(document).on(
       'taphold',
@@ -47,22 +55,15 @@ TDP.commands.touchScreenEvents = {
   
   configureMobileEvents: function () {
     $.event.special.tap.tapholdThreshold = 1000;
-  }, 
-  
-  init: function () {
-    if (this.onMobile()) {
-      this.initNamedActions();
-      this.initSpecialAttack();
-      this.configureMobileEvents();
-      this.disableSelection()
-    }
   },
 
   disableSelection: function() {
-    $('.TDP_control_bar_button, .TDP_board, #TDP_readout')
-      .attr('unselectable', 'on')
-      .css('user-select', 'none')
-      .on('selectstart', false);
+   if (this.onMobile()) {
+     $('.TDP_control_bar_button, #TDP_board, #TDP_readout')
+       .attr('unselectable', 'on')
+       .css('user-select', 'none')
+       .on('selectstart', false);
+   }
   },
   
   onMobile: function () {

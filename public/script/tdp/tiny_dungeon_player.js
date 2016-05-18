@@ -61,6 +61,7 @@ var TDP = {
     this.setHealth(this.health);
     this.setTurns(0);
     this.setScore(0);
+    TDP.commands.touchScreenEvents.disableSelection();
   },
 
   getMonsters: function () {
