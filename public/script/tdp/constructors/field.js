@@ -67,9 +67,6 @@ TDP.constructors.Field = function (source) {
   this.drawBoard = function () {
     var content = $('<div>');
     content.addClass('TDP_board_inner');
-    content.attr('unselectable', 'on');
-    content.css('user-select', 'none');
-    content.on('selectstart', false);
     $.each(
       this.rows,
       function (i, row) {
