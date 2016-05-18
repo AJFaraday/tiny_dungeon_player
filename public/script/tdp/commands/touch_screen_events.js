@@ -25,6 +25,7 @@ TDP.commands.touchScreenEvents = {
 
         }
       );
+      $.event.special.tap.tapholdThreshold = 2000;
     }
   },
 
