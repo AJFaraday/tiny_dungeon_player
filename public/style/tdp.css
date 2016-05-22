@@ -11,7 +11,7 @@ div#TDP_status_bar {
 
   background-color: #F4A460;
   border-radius: 6px;
-  height: 38px;
+  height: 60px;
   padding-left: 10px;
   margin-right: 6px;
   float:left;
@@ -19,7 +19,7 @@ div#TDP_status_bar {
 }
 
 span.TDP_sb_element {
-  font-size: 30px;
+  font-size: 40px;
   float: left;
   top: 2px;
   width: 32.33333333%;
@@ -46,7 +46,7 @@ div#TDP_control_bar {
 
   background-color: #D48440;
   border-radius: 6px;
-  height: 38px;
+  height: 60px;
   padding-left: 10px;
   float:left;
   margin-bottom:2px;
@@ -54,13 +54,13 @@ div#TDP_control_bar {
 
 div.TDP_control_bar_button {
   padding: 1px;
-  width: 32px;
-  height: 32px;
+  width: 60px;
+  height: 50px;
   font-size: 30px;
   float: left;
-  top: 2px;
-  padding-right: 20px;
-  margin-top: 2px;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-top: 10px;
 }
 
 
