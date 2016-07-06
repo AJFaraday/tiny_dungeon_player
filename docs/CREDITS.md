@@ -8,9 +8,9 @@ The live server is a Raspberry Pi under Andrews bed.
 
 The level design is generated algorithmically and distributed
 by a Twitter bot, @TinyDungeons. Tiny Dungeons was created and
-is maintained by Noah Swartz (@SwartzCr). He has been a supported
-the development and balancing of the Player throughout it's
-life-span.
+is maintained by Noah Swartz (@SwartzCr). He has been a sounding-board
+throughout the project, supporting the development and balancing of the 
+Player throughout it's life-span.
 
 ## Lovely People
 
